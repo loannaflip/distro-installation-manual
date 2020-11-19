@@ -182,7 +182,7 @@
 <ul>
 <li>Install <code>efibootmgr</code>: <code>emerge -q sys-boot/efibootmgr</code>.</li>
 <li>Create the directory where the kernel image will be installed: <code>mkdir -p /boot/EFI/Gentoo</code>.</li>
-<li>Copy the kernel image to appropriate place: <code>cp /usr/src/linux/linux-ck/arch/x86/boot/bzImage /boot/EFI/Gentoo/bzImage.efi</code>.</li>
+<li>Copy the kernel image to appropriate place: <code>cp /usr/src/linux/arch/x86/boot/bzImage /boot/EFI/Gentoo/bzImage.efi</code>.</li>
 <li>Create a EFI Boot entry for the kernel image to boot: <code>efibootmgr -c -d /dev/sdx -p 2 -L &quot;Gentoo&quot; -l '\EFI\Gentoo\bzImage.efi'</code>.</li>
 </ul>
 </li>

@@ -166,7 +166,7 @@
                         <h2><a class="header" href="#installing-the-linux-kernel" id="installing-the-linux-kernel">Installing The Linux Kernel</a></h2>
 <ul>
 <li>
-<p><strong>METHOD 1</strong> (PF)</p>
+<p><strong>METHOD 1</strong> (linux-pf)</p>
 <ul>
 <li>Merge the pf kernel: <code>emerge -q sys-kernel/pf-sources</code>.</li>
 <li>Select the kernel: <code>eselect kernel set 1</code>.</li>
@@ -178,11 +178,14 @@
 </ul>
 </li>
 <li>
-<p><strong>METHOD 2</strong> (CK) (<strong>RECOMMENDED</strong>)</p>
+<p><strong>METHOD 2</strong> (linux) (<strong>RECOMMENDED</strong>)</p>
 <ul>
-<li>Create the directory if not exist: <code>mkdir -p /usr/src/linux</code>.</li>
-<li>Change the directory: <code>cd /usr/src/linux</code>.</li>
-<li>Clone the linux-ck kernel repository &amp; cd into it: <code>git clone https://github.com/Uniminin/linux-ck ; cd linux-ck</code>.</li>
+<li>Create the directory if not exist: <code>mkdir -p /usr/src/</code>.</li>
+<li>Change to the directory: <code>cd /usr/src/</code>.</li>
+<li>Download the latest stable kernel from <a href="https://www.kernel.org/">kernel.org</a>: <code>wget https://cdn.kernel.org/pub/linux/kernel/vx.x/linux-x.x.x.tar.xz</code>.</li>
+<li>Extract the kernel: <code>tar -xvf linux-x.x.x.tar.xz</code>.</li>
+<li>Change the kernel directory name: <code>mv linux-x.x.x.tar.xz linux</code>.</li>
+<li>Change to the kernel directory: <code>cd linux</code>.</li>
 <li>Configure the kernel (Update current config disabling modules not loaded): <code>make --jobs &quot;$(nproc || printf '%s\n' 1)&quot; localmodconfig</code>.</li>
 <li>Compile the kernel: <code>make --jobs &quot;$(nproc || printf '%s\n' 1)&quot; make</code>.</li>
 <li>Install the kernel modules: <code>make --jobs &quot;$(nproc || printf '%s\n' 1)&quot; modules_install</code>.</li>
