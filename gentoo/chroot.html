@@ -168,7 +168,7 @@
 <li>Create directory <code>repos.conf</code> if does not exist: <code>&lt;superuser&gt; mkdir --parents /mnt/gentoo/etc/portage/repos.conf</code>.</li>
 <li>Copy the Gentoo repository configuration file provided by Portage to the <code>repos.conf</code> directory: <code>&lt;superuser&gt; cp /mnt/gentoo/usr/share/portage/config/repos.conf /mnt/gentoo/etc/portage/repos.conf/gentoo.conf</code>.</li>
 <li>Copy DNS info: <code>cp /etc/resolv.conf /mnt/gentoo/etc/</code>.</li>
-<li>Mounting the necessary filesystems for chrooting:-</li>
+<li>Mounting the necessary filesystems for chrooting:</li>
 </ul>
 <pre><code>&lt;superuser&gt; mount --types proc /proc /mnt/gentoo/proc
 &lt;superuser&gt; mount --rbind /sys /mnt/gentoo/sys

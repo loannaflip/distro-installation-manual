@@ -166,7 +166,7 @@
                 <div id="content" class="content">
                     <main>
                         <h1><a class="header" href="#a-hrefhttpswwwarchlinuxorgarchlinuxa" id="a-hrefhttpswwwarchlinuxorgarchlinuxa"><a href=https://www.archlinux.org/>ArchLinux</a></a></h1>
-<p>A lightweight and flexible Linux® distribution that tries to Keep It Simple.</p>
+<p>A lightweight and flexible Linux distribution that tries to Keep It Simple.</p>
 <h1><a class="header" href="#note" id="note">Note</a></h1>
 <p>This is a easy guide to install minimal Archlinux base along with the kernel, Bootloader &amp; Networking.</p>
 <h1><a class="header" href="#requirements" id="requirements">Requirements</a></h1>
@@ -282,8 +282,8 @@ grub-mkconfig -o /boot/grub/grub.cfg
 <li>NOTE: <code>&lt;superuser&gt;</code> -&gt; <code>sudo</code>/<code>doas</code> or <code>X</code>.</li>
 </ul>
 <ul>
-<li>Prepare them:- <code>&lt;superuser&gt; cfdisk /dev/sdx</code> (<code>x</code> is your preferred storage. Check by executing the command: <code>df -h</code> or <code>lsblk</code>).</li>
-<li>Format the filesystems for each partition:-
+<li>Prepare them: <code>&lt;superuser&gt; cfdisk /dev/sdx</code> (<code>x</code> is your preferred storage. Check by executing the command: <code>df -h</code> or <code>lsblk</code>).</li>
+<li>Format the filesystems for each partition:
 <ul>
 <li>root partition: <code>&lt;superuser&gt; mkfs.btrfs /dev/sdx1</code>.</li>
 <li>boot partition: <code>&lt;superuser&gt; mkfs.vfat -F32 /dev/sdx2</code>.</li>
@@ -304,7 +304,7 @@ grub-mkconfig -o /boot/grub/grub.cfg
 <li>Create directory <code>repos.conf</code> if does not exist: <code>&lt;superuser&gt; mkdir --parents /mnt/gentoo/etc/portage/repos.conf</code>.</li>
 <li>Copy the Gentoo repository configuration file provided by Portage to the <code>repos.conf</code> directory: <code>&lt;superuser&gt; cp /mnt/gentoo/usr/share/portage/config/repos.conf /mnt/gentoo/etc/portage/repos.conf/gentoo.conf</code>.</li>
 <li>Copy DNS info: <code>cp /etc/resolv.conf /mnt/gentoo/etc/</code>.</li>
-<li>Mounting the necessary filesystems for chrooting:-</li>
+<li>Mounting the necessary filesystems for chrooting:</li>
 </ul>
 <pre><code>&lt;superuser&gt; mount --types proc /proc /mnt/gentoo/proc
 &lt;superuser&gt; mount --rbind /sys /mnt/gentoo/sys
@@ -317,7 +317,7 @@ grub-mkconfig -o /boot/grub/grub.cfg
 </ul>
 <h2><a class="header" href="#configuring-dns" id="configuring-dns">Configuring DNS</a></h2>
 <ul>
-<li>Change live system's DNS: <code>&lt;superuser&gt; nano /etc/resolv.conf</code> and add the following:-</li>
+<li>Change live system's DNS: <code>&lt;superuser&gt; nano /etc/resolv.conf</code> and add the following:</li>
 </ul>
 <pre><code class="language-bash">nameserver 8.8.8.8 # Google
 nameserver 1.1.1.1 # Cloudflare
@@ -330,7 +330,7 @@ nameserver 1.1.1.1 # Cloudflare
 </ul>
 <h2><a class="header" href="#configuring-portage-config" id="configuring-portage-config">Configuring Portage Config</a></h2>
 <ul>
-<li>Edit by executing <code>nano /etc/portage/make.conf</code> and add the following:-</li>
+<li>Edit by executing <code>nano /etc/portage/make.conf</code> and add the following:</li>
 </ul>
 <pre><code class="language-bash"># Flags
 # if on intel cpu add &quot;-falign-functions=32&quot; in COMMON_FLAGS
@@ -449,7 +449,7 @@ LC_MESSAGES=C
 GENTOO_MIRRORS=&quot;http://distfiles.gentoo.org&quot;
 </code></pre>
 <ul>
-<li>Edit by executing <code>nano /etc/portage/package.use</code> and add the following:-</li>
+<li>Edit by executing <code>nano /etc/portage/package.use</code> and add the following:</li>
 </ul>
 <pre><code class="language-bash"># User Sets #
 sys-devel/gcc pgo graphite lto -ada -d -objc
@@ -497,7 +497,8 @@ net-misc/networkmanager -wex
 <li>Merge the pf kernel: <code>emerge -q sys-kernel/pf-sources</code>.</li>
 <li>Select the kernel: <code>eselect kernel set 1</code>.</li>
 <li>Change the directory: <code>cd /usr/src/linux</code>.</li>
-<li>Configure the kernel using menu-driven configuration screen: <code>make menuconfig</code>.</li>
+<li>Configure the kernel using menu-driven configuration screen: <code>make --jobs &quot;$(nproc || printf '%s\n' 1)&quot; menuconfig</code>.</li>
+<li><strong>OR</strong> Configure the kernel (Update current config disabling modules not loaded): <code>make --jobs &quot;$(nproc || printf '%s\n' 1)&quot; localmodconfig</code>.</li>
 <li>Compile the kernel: <code>make --jobs &quot;$(nproc || printf '%s\n' 1)&quot;</code>.</li>
 <li>Install the kernel modules: <code>make --jobs &quot;$(nproc || printf '%s\n' 1)&quot; modules_install</code>.</li>
 <li>Copy the kernel image to <code>/boot/</code>: <code>make --jobs &quot;$(nproc || printf '%s\n' 1)&quot; install</code>.</li>
@@ -512,7 +513,8 @@ net-misc/networkmanager -wex
 <li>Extract the kernel: <code>tar -xvf linux-x.x.x.tar.xz</code>.</li>
 <li>Change the kernel directory name: <code>mv linux-x.x.x.tar.xz linux</code>.</li>
 <li>Change to the kernel directory: <code>cd linux</code>.</li>
-<li>Configure the kernel (Update current config disabling modules not loaded): <code>make --jobs &quot;$(nproc || printf '%s\n' 1)&quot; localmodconfig</code>.</li>
+<li>Configure the kernel using menu-driven configuration screen: <code>make --jobs &quot;$(nproc || printf '%s\n' 1)&quot; menuconfig</code>.</li>
+<li><strong>OR</strong> Configure the kernel (Update current config disabling modules not loaded): <code>make --jobs &quot;$(nproc || printf '%s\n' 1)&quot; localmodconfig</code>.</li>
 <li>Compile the kernel: <code>make --jobs &quot;$(nproc || printf '%s\n' 1)&quot; make</code>.</li>
 <li>Install the kernel modules: <code>make --jobs &quot;$(nproc || printf '%s\n' 1)&quot; modules_install</code>.</li>
 <li>Copy the kernel image to <code>/boot/</code>: <code>make --jobs &quot;$(nproc || printf '%s\n' 1)&quot; install</code>.</li>
@@ -537,7 +539,7 @@ net-misc/networkmanager -wex
 </ul>
 <h2><a class="header" href="#update-fstab" id="update-fstab">Update fstab</a></h2>
 <ul>
-<li>Edit by executing <code>nano /etc/fstab</code> and add the following:-</li>
+<li>Edit by executing <code>nano /etc/fstab</code> and add the following:</li>
 </ul>
 <pre><code class="language-bash"># System #
 /dev/sdx2   /boot  vfat    defaults,noatime  0 0
@@ -549,13 +551,13 @@ tmpfs /var/tmp/portage tmpfs rw,nosuid,noatime,nodev,size=NG,mode=775,uid=portag
 </code></pre>
 <h2><a class="header" href="#updating-the-hostname" id="updating-the-hostname">Updating the hostname</a></h2>
 <ul>
-<li>Edit by executing <code>nano /etc/conf.d/hostname</code> and change/update according to the following:-</li>
+<li>Edit by executing <code>nano /etc/conf.d/hostname</code> and change/update according to the following:</li>
 </ul>
 <pre><code class="language-bash">hostname=&quot;gentoo&quot;
 </code></pre>
 <h2><a class="header" href="#updating-the-hosts-file" id="updating-the-hosts-file">Updating the hosts file</a></h2>
 <ul>
-<li>Edit by executing <code>nano /etc/hosts</code> and change/update according to the following:-</li>
+<li>Edit by executing <code>nano /etc/hosts</code> and change/update according to the following:</li>
 </ul>
 <pre><code class="language-bash">127.0.0.1       gentoo    localhost
 ::1             gentoo    localhost
@@ -564,7 +566,7 @@ tmpfs /var/tmp/portage tmpfs rw,nosuid,noatime,nodev,size=NG,mode=775,uid=portag
 <p>If the system has several/Different network interface check invoking <code>ifconfig</code> and set the proper network interface. Example: <code>eth0</code>, <code>enp2s0</code>, <code>enp3s0</code>.</p>
 <ul>
 <li>Edit by executing <code>nano /etc/conf.d/net</code> and add: <code>config_enp2s0=&quot;dhcp&quot;</code>.</li>
-<li>To Automatically start networking at boot executing the following commands:-</li>
+<li>To Automatically start networking at boot executing the following commands:</li>
 </ul>
 <pre><code>cd /etc/init.d
 ln -s net.lo net.enp2s0
@@ -578,7 +580,7 @@ rc-update add net.enp2s0 default
 <h2><a class="header" href="#improve-boot-time" id="improve-boot-time">Improve Boot Time</a></h2>
 <ul>
 <li>Remove the default config: <code>rm /etc/rc.conf</code></li>
-<li>Edit by executing <code>nano /etc/rc.conf</code> and add the following:-</li>
+<li>Edit by executing <code>nano /etc/rc.conf</code> and add the following:</li>
 </ul>
 <pre><code class="language-bash"># Global OpenRC configuration settings
 rc_parallel=&quot;YES&quot;
@@ -609,7 +611,7 @@ rc_send_sigkill=&quot;YES&quot;
 </li>
 </ul>
 <ul>
-<li>In order to boot directly from UEFI, the kernel needs to know where to find the root (/) partition of the system to be booted. Follow the guide showing what exact things needs to configued in the kernel: https://wiki.gentoo.org/wiki/EFI_stub_kernel for EFISTUB. Then:-
+<li>In order to boot directly from UEFI, the kernel needs to know where to find the root (/) partition of the system to be booted. Follow the guide showing what exact things needs to configued in the kernel: https://wiki.gentoo.org/wiki/EFI_stub_kernel for EFISTUB. Then:
 <ul>
 <li>Install <code>efibootmgr</code>: <code>emerge -q sys-boot/efibootmgr</code>.</li>
 <li>Create the directory where the kernel image will be installed: <code>mkdir -p /boot/EFI/Gentoo</code>.</li>
@@ -678,8 +680,8 @@ wheel 	 Be able to use su.
 <li>NOTE: <code>&lt;superuser&gt;</code> -&gt; <code>sudo</code>/<code>doas</code> or <code>X</code>.</li>
 </ul>
 <ul>
-<li>Prepare them:- <code>&lt;superuser&gt; cfdisk /dev/sdx</code> (<code>x</code> -&gt; your preferred storage. Check by invoking the command: <code>df -h</code> or <code>lsblk</code>).</li>
-<li>Format the filesystems for each partition:-
+<li>Prepare them: <code>&lt;superuser&gt; cfdisk /dev/sdx</code> (<code>x</code> -&gt; your preferred storage. Check by invoking the command: <code>df -h</code> or <code>lsblk</code>).</li>
+<li>Format the filesystems for each partition:
 <ul>
 <li>root partition: <code>&lt;superuser&gt; mkfs.btrfs /dev/sdx1</code>.</li>
 <li>boot partition: <code>&lt;superuser&gt; mkfs.vfat -F32 /dev/sdx2</code>.</li>
@@ -697,7 +699,7 @@ wheel 	 Be able to use su.
 <h2><a class="header" href="#chrooting-into-exherbo" id="chrooting-into-exherbo">Chrooting into Exherbo</a></h2>
 <ul>
 <li>
-<p>Mount everything for chroot by invoking the following commands:-</p>
+<p>Mount everything for chroot by invoking the following commands:</p>
 <ul>
 <li><code>&lt;superuser&gt; mount -o rbind /dev /mnt/exherbo/dev/</code>.</li>
 <li><code>&lt;superuser&gt; mount -o rbind /sys /mnt/exherbo/sys/</code>.</li>
@@ -714,14 +716,14 @@ wheel 	 Be able to use su.
 </ul>
 <h2><a class="header" href="#configuring-dns-1" id="configuring-dns-1">Configuring DNS</a></h2>
 <ul>
-<li>Change live system's DNS: <code>&lt;superuser&gt; nano /etc/resolv.conf</code> and add the following:-</li>
+<li>Change live system's DNS: <code>&lt;superuser&gt; nano /etc/resolv.conf</code> and add the following:</li>
 </ul>
 <pre><code>nameserver 8.8.8.8 # Google
 nameserver 1.1.1.1 # Cloudflare
 </code></pre>
 <h2><a class="header" href="#update-fstab-1" id="update-fstab-1">Update fstab</a></h2>
 <ul>
-<li>Edit by executing <code>vim /etc/fstab</code> and add the following:-</li>
+<li>Edit by executing <code>vim /etc/fstab</code> and add the following:</li>
 </ul>
 <pre><code class="language-bash"># System #
 /dev/sdx2   /boot  vfat    defaults,noatime  0 0
@@ -735,14 +737,15 @@ nameserver 1.1.1.1 # Cloudflare
 <li>Extract the kernel: <code>tar -xvf linux-x.x.x.tar.xz</code>.</li>
 <li>Change the kernel directory name: <code>mv linux-x.x.x.tar.xz linux</code>.</li>
 <li>Change to the kernel directory: <code>cd linux</code>.</li>
-<li>Configure the kernel (Update current config disabling modules not loaded): <code>make --jobs &quot;$(nproc || printf '%s\n' 1)&quot; localmodconfig</code>.</li>
+<li>Configure the kernel using menu-driven configuration screen: <code>make --jobs &quot;$(nproc || printf '%s\n' 1)&quot; menuconfig</code>.</li>
+<li><strong>OR</strong> Configure the kernel (Update current config disabling modules not loaded): <code>make --jobs &quot;$(nproc || printf '%s\n' 1)&quot; localmodconfig</code>.</li>
 <li>Compile the kernel: <code>make --jobs &quot;$(nproc || printf '%s\n' 1)&quot; make</code>.</li>
 <li>Install the kernel modules: <code>make --jobs &quot;$(nproc || printf '%s\n' 1)&quot; modules_install</code>.</li>
 <li>Copy the kernel image to <code>/boot/</code>: <code>make --jobs &quot;$(nproc || printf '%s\n' 1)&quot; install</code>.</li>
 </ul>
 <h2><a class="header" href="#configure-paludis" id="configure-paludis">Configure Paludis</a></h2>
 <ul>
-<li>Edit by executing <code>vim /etc/paludis/bashrc</code> and add the following:-</li>
+<li>Edit by executing <code>vim /etc/paludis/bashrc</code> and add the following:</li>
 </ul>
 <pre><code class="language-bash">CHOST=&quot;x86_64-pc-linux-gnu&quot;
 CBUILD=&quot;x86_64-pc-linux-gnu&quot;
@@ -774,7 +777,7 @@ if [ &quot;${CATEGORY}/${PN}&quot; = &quot;dev-lang/python&quot; ] ; then
 fi
 </code></pre>
 <ul>
-<li>Edit by executing <code>vim /etc/paludis/options.conf</code> and add the following:-</li>
+<li>Edit by executing <code>vim /etc/paludis/options.conf</code> and add the following:</li>
 </ul>
 <pre><code class="language-bash">*/* -recommended_tests -fortan systemd dbus gtk threads alsa pulseaudio \
     # N to be replaced with the number of total threads on the system
@@ -820,7 +823,7 @@ sys-apps/systemd curl
 </li>
 </ul>
 <ul>
-<li>In order to boot directly from UEFI, the kernel needs to know where to find the root (/) partition of the system to be booted. Follow the guide showing what exact things needs to configued in the kernel: https://wiki.gentoo.org/wiki/EFI_stub_kernel for EFISTUB. Then:-
+<li>In order to boot directly from UEFI, the kernel needs to know where to find the root (/) partition of the system to be booted. Follow the guide showing what exact things needs to configued in the kernel: https://wiki.gentoo.org/wiki/EFI_stub_kernel for EFISTUB. Then:
 <ul>
 <li>Install <code>efibootmgr</code>: <code>cave resolve -qx1 sys-boot/efibootmgr</code>.</li>
 <li>Create the directory where the kernel image will be installed: <code>mkdir -p /boot/EFI/Exherbo</code>.</li>
@@ -831,13 +834,13 @@ sys-apps/systemd curl
 </ul>
 <h2><a class="header" href="#updating-the-hostname-1" id="updating-the-hostname-1">Updating the hostname</a></h2>
 <ul>
-<li>Edit by executing <code>vim /etc/conf.d/hostname</code> and change/update according to the following:-</li>
+<li>Edit by executing <code>vim /etc/conf.d/hostname</code> and change/update according to the following:</li>
 </ul>
 <pre><code class="language-bash">hostname=&quot;exherbo&quot;
 </code></pre>
 <h2><a class="header" href="#updating-the-hosts-file-1" id="updating-the-hosts-file-1">Updating the hosts file</a></h2>
 <ul>
-<li>Edit by executing <code>vim /etc/hosts</code> and change/update according to the following:-</li>
+<li>Edit by executing <code>vim /etc/hosts</code> and change/update according to the following:</li>
 </ul>
 <pre><code class="language-bash">127.0.0.1       exherbo
 ::1             exherbo

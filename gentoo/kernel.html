@@ -171,7 +171,8 @@
 <li>Merge the pf kernel: <code>emerge -q sys-kernel/pf-sources</code>.</li>
 <li>Select the kernel: <code>eselect kernel set 1</code>.</li>
 <li>Change the directory: <code>cd /usr/src/linux</code>.</li>
-<li>Configure the kernel using menu-driven configuration screen: <code>make menuconfig</code>.</li>
+<li>Configure the kernel using menu-driven configuration screen: <code>make --jobs &quot;$(nproc || printf '%s\n' 1)&quot; menuconfig</code>.</li>
+<li><strong>OR</strong> Configure the kernel (Update current config disabling modules not loaded): <code>make --jobs &quot;$(nproc || printf '%s\n' 1)&quot; localmodconfig</code>.</li>
 <li>Compile the kernel: <code>make --jobs &quot;$(nproc || printf '%s\n' 1)&quot;</code>.</li>
 <li>Install the kernel modules: <code>make --jobs &quot;$(nproc || printf '%s\n' 1)&quot; modules_install</code>.</li>
 <li>Copy the kernel image to <code>/boot/</code>: <code>make --jobs &quot;$(nproc || printf '%s\n' 1)&quot; install</code>.</li>
@@ -186,7 +187,8 @@
 <li>Extract the kernel: <code>tar -xvf linux-x.x.x.tar.xz</code>.</li>
 <li>Change the kernel directory name: <code>mv linux-x.x.x.tar.xz linux</code>.</li>
 <li>Change to the kernel directory: <code>cd linux</code>.</li>
-<li>Configure the kernel (Update current config disabling modules not loaded): <code>make --jobs &quot;$(nproc || printf '%s\n' 1)&quot; localmodconfig</code>.</li>
+<li>Configure the kernel using menu-driven configuration screen: <code>make --jobs &quot;$(nproc || printf '%s\n' 1)&quot; menuconfig</code>.</li>
+<li><strong>OR</strong> Configure the kernel (Update current config disabling modules not loaded): <code>make --jobs &quot;$(nproc || printf '%s\n' 1)&quot; localmodconfig</code>.</li>
 <li>Compile the kernel: <code>make --jobs &quot;$(nproc || printf '%s\n' 1)&quot; make</code>.</li>
 <li>Install the kernel modules: <code>make --jobs &quot;$(nproc || printf '%s\n' 1)&quot; modules_install</code>.</li>
 <li>Copy the kernel image to <code>/boot/</code>: <code>make --jobs &quot;$(nproc || printf '%s\n' 1)&quot; install</code>.</li>

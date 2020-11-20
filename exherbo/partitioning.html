@@ -169,8 +169,8 @@
 <li>NOTE: <code>&lt;superuser&gt;</code> -&gt; <code>sudo</code>/<code>doas</code> or <code>X</code>.</li>
 </ul>
 <ul>
-<li>Prepare them:- <code>&lt;superuser&gt; cfdisk /dev/sdx</code> (<code>x</code> -&gt; your preferred storage. Check by invoking the command: <code>df -h</code> or <code>lsblk</code>).</li>
-<li>Format the filesystems for each partition:-
+<li>Prepare them: <code>&lt;superuser&gt; cfdisk /dev/sdx</code> (<code>x</code> -&gt; your preferred storage. Check by invoking the command: <code>df -h</code> or <code>lsblk</code>).</li>
+<li>Format the filesystems for each partition:
 <ul>
 <li>root partition: <code>&lt;superuser&gt; mkfs.btrfs /dev/sdx1</code>.</li>
 <li>boot partition: <code>&lt;superuser&gt; mkfs.vfat -F32 /dev/sdx2</code>.</li>

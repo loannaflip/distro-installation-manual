@@ -167,7 +167,7 @@
 <p>If the system has several/Different network interface check invoking <code>ifconfig</code> and set the proper network interface. Example: <code>eth0</code>, <code>enp2s0</code>, <code>enp3s0</code>.</p>
 <ul>
 <li>Edit by executing <code>nano /etc/conf.d/net</code> and add: <code>config_enp2s0=&quot;dhcp&quot;</code>.</li>
-<li>To Automatically start networking at boot executing the following commands:-</li>
+<li>To Automatically start networking at boot executing the following commands:</li>
 </ul>
 <pre><code>cd /etc/init.d
 ln -s net.lo net.enp2s0
