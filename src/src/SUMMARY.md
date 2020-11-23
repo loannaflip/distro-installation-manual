@@ -12,8 +12,8 @@
     - [Hosts](archlinux/hosts.md)
     - [Networking](archlinux/networking.md)
     - [Bootloader](archlinux/bootloader.md)
-    - [Password](archlinux/password.md))
-
+    - [Password](archlinux/password.md)
+    - [Final Step](archlinux/final_step.md)
 
 #
 

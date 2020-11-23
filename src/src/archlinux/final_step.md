@@ -1,0 +1,2 @@
+## Final Step
+* Reboot the machine and boot into Archlinux.
