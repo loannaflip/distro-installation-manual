@@ -1,8 +1,10 @@
-# uniminin.github.io
-Uniminin's Distro Installation Guides
+# io/distro-installation-manual 
+Uniminin's Distro Installation Guides.
 
-## Upstream SRC
-- [Uniminin/distro-installation-manual](https://github.com/Uniminin/distro-installation-manual)
+## Includes
+- [Archlinux](https://www.archlinux.org/)
+- [Gentoo](https://gentoo.org/)
+- [Exherbo](https://uniminin.github.io/distro-installation-manual/)
 
 ## LICENSE
 The project is licensed under the terms of `GNU General Public License v3.0`. Check `LICENSE` file for more info.
