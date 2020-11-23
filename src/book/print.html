@@ -1,0 +1,938 @@
+<!DOCTYPE HTML>
+<html lang="en" class="sidebar-visible no-js light">
+    <head>
+        <!-- Book generated using mdBook -->
+        <meta charset="UTF-8">
+        <title>Distro Installation Manual</title>
+        
+        <meta name="robots" content="noindex" />
+        
+        
+
+
+        <!-- Custom HTML head -->
+        
+
+
+        <meta content="text/html; charset=utf-8" http-equiv="Content-Type">
+        <meta name="description" content="">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <meta name="theme-color" content="#ffffff" />
+
+        
+        <link rel="icon" href="favicon.svg">
+        
+        
+        <link rel="shortcut icon" href="favicon.png">
+        
+        <link rel="stylesheet" href="css/variables.css">
+        <link rel="stylesheet" href="css/general.css">
+        <link rel="stylesheet" href="css/chrome.css">
+        
+        <link rel="stylesheet" href="css/print.css" media="print">
+        
+
+        <!-- Fonts -->
+        <link rel="stylesheet" href="FontAwesome/css/font-awesome.css">
+        
+        <link rel="stylesheet" href="fonts/fonts.css">
+        
+
+        <!-- Highlight.js Stylesheets -->
+        <link rel="stylesheet" href="highlight.css">
+        <link rel="stylesheet" href="tomorrow-night.css">
+        <link rel="stylesheet" href="ayu-highlight.css">
+
+        <!-- Custom theme stylesheets -->
+        
+
+        
+    </head>
+    <body>
+        <!-- Provide site root to javascript -->
+        <script type="text/javascript">
+            var path_to_root = "";
+            var default_theme = window.matchMedia("(prefers-color-scheme: dark)").matches ? "navy" : "light";
+        </script>
+
+        <!-- Work around some values being stored in localStorage wrapped in quotes -->
+        <script type="text/javascript">
+            try {
+                var theme = localStorage.getItem('mdbook-theme');
+                var sidebar = localStorage.getItem('mdbook-sidebar');
+
+                if (theme.startsWith('"') && theme.endsWith('"')) {
+                    localStorage.setItem('mdbook-theme', theme.slice(1, theme.length - 1));
+                }
+
+                if (sidebar.startsWith('"') && sidebar.endsWith('"')) {
+                    localStorage.setItem('mdbook-sidebar', sidebar.slice(1, sidebar.length - 1));
+                }
+            } catch (e) { }
+        </script>
+
+        <!-- Set the theme before any content is loaded, prevents flash -->
+        <script type="text/javascript">
+            var theme;
+            try { theme = localStorage.getItem('mdbook-theme'); } catch(e) { }
+            if (theme === null || theme === undefined) { theme = default_theme; }
+            var html = document.querySelector('html');
+            html.classList.remove('no-js')
+            html.classList.remove('light')
+            html.classList.add(theme);
+            html.classList.add('js');
+        </script>
+
+        <!-- Hide / unhide sidebar before it is displayed -->
+        <script type="text/javascript">
+            var html = document.querySelector('html');
+            var sidebar = 'hidden';
+            if (document.body.clientWidth >= 1080) {
+                try { sidebar = localStorage.getItem('mdbook-sidebar'); } catch(e) { }
+                sidebar = sidebar || 'visible';
+            }
+            html.classList.remove('sidebar-visible');
+            html.classList.add("sidebar-" + sidebar);
+        </script>
+
+        <nav id="sidebar" class="sidebar" aria-label="Table of contents">
+            <div class="sidebar-scrollbox">
+                <ol class="chapter"><li class="chapter-item expanded "><a href="archlinux/archlinux.html"><strong aria-hidden="true">1.</strong> Arch Linux</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="archlinux/note.html"><strong aria-hidden="true">1.1.</strong> Note</a></li><li class="chapter-item expanded "><a href="archlinux/requirements.html"><strong aria-hidden="true">1.2.</strong> Requirements</a></li><li class="chapter-item expanded "><a href="archlinux/partitioning.html"><strong aria-hidden="true">1.3.</strong> Partitioning</a></li><li class="chapter-item expanded "><a href="archlinux/mount.html"><strong aria-hidden="true">1.4.</strong> Mounting</a></li><li class="chapter-item expanded "><a href="archlinux/base.html"><strong aria-hidden="true">1.5.</strong> Base System</a></li><li class="chapter-item expanded "><a href="archlinux/fstab.html"><strong aria-hidden="true">1.6.</strong> Configure fstab</a></li><li class="chapter-item expanded "><a href="archlinux/chroot.html"><strong aria-hidden="true">1.7.</strong> Chrooting</a></li><li class="chapter-item expanded "><a href="archlinux/hostname.html"><strong aria-hidden="true">1.8.</strong> Hostname</a></li><li class="chapter-item expanded "><a href="archlinux/hosts.html"><strong aria-hidden="true">1.9.</strong> Hosts</a></li><li class="chapter-item expanded "><a href="archlinux/networking.html"><strong aria-hidden="true">1.10.</strong> Networking</a></li><li class="chapter-item expanded "><a href="archlinux/bootloader.html"><strong aria-hidden="true">1.11.</strong> Bootloader</a></li><li class="chapter-item expanded "><a href="archlinux/password.html"><strong aria-hidden="true">1.12.</strong> Password</a></li></ol></li><li class="chapter-item expanded "><li class="part-title"></li><li class="chapter-item expanded "><a href="gentoo/gentoo.html"><strong aria-hidden="true">2.</strong> Gentoo</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="gentoo/note.html"><strong aria-hidden="true">2.1.</strong> Note</a></li><li class="chapter-item expanded "><a href="gentoo/requirements.html"><strong aria-hidden="true">2.2.</strong> Requirements</a></li><li class="chapter-item expanded "><a href="gentoo/prequerities.html"><strong aria-hidden="true">2.3.</strong> Prequerities</a></li><li class="chapter-item expanded "><a href="gentoo/partitioning.html"><strong aria-hidden="true">2.4.</strong> Partitioning</a></li><li class="chapter-item expanded "><a href="gentoo/mount_extract.html"><strong aria-hidden="true">2.5.</strong> Mount &amp; Extract Stage</a></li><li class="chapter-item expanded "><a href="gentoo/chroot.html"><strong aria-hidden="true">2.6.</strong> Chrooting</a></li><li class="chapter-item expanded "><a href="gentoo/dns.html"><strong aria-hidden="true">2.7.</strong> DNS</a></li><li class="chapter-item expanded "><a href="gentoo/portage_config.html"><strong aria-hidden="true">2.8.</strong> Portage Configuration</a></li><li class="chapter-item expanded "><a href="gentoo/rebuild_upgrade.html"><strong aria-hidden="true">2.9.</strong> Rebuild &amp; Upgrade</a></li><li class="chapter-item expanded "><a href="gentoo/kernel.html"><strong aria-hidden="true">2.10.</strong> Kernel</a></li><li class="chapter-item expanded "><a href="gentoo/firmware.html"><strong aria-hidden="true">2.11.</strong> Firmware</a></li><li class="chapter-item expanded "><a href="gentoo/configure_system.html"><strong aria-hidden="true">2.12.</strong> System Configuration</a></li><li class="chapter-item expanded "><a href="gentoo/fstab.html"><strong aria-hidden="true">2.13.</strong> Configure fstab</a></li><li class="chapter-item expanded "><a href="gentoo/tmpfs.html"><strong aria-hidden="true">2.14.</strong> TMPFS</a></li><li class="chapter-item expanded "><a href="gentoo/hostname.html"><strong aria-hidden="true">2.15.</strong> Hostname</a></li><li class="chapter-item expanded "><a href="gentoo/hosts.html"><strong aria-hidden="true">2.16.</strong> Hosts</a></li><li class="chapter-item expanded "><a href="gentoo/networking.html"><strong aria-hidden="true">2.17.</strong> Networking</a></li><li class="chapter-item expanded "><a href="gentoo/system_logger.html"><strong aria-hidden="true">2.18.</strong> System Logger</a></li><li class="chapter-item expanded "><a href="gentoo/optimize_boot.html"><strong aria-hidden="true">2.19.</strong> Boot Time Optimization</a></li><li class="chapter-item expanded "><a href="gentoo/boot.html"><strong aria-hidden="true">2.20.</strong> Booting</a></li><li class="chapter-item expanded "><a href="gentoo/user_creation.html"><strong aria-hidden="true">2.21.</strong> User Creation</a></li><li class="chapter-item expanded "><a href="gentoo/finalizing.html"><strong aria-hidden="true">2.22.</strong> Finalizing</a></li><li class="chapter-item expanded "><a href="gentoo/final_step.html"><strong aria-hidden="true">2.23.</strong> Final Step</a></li></ol></li><li class="chapter-item expanded "><li class="part-title"></li><li class="chapter-item expanded "><a href="exherbo/exherbo.html"><strong aria-hidden="true">3.</strong> Exherbo</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="exherbo/note.html"><strong aria-hidden="true">3.1.</strong> Note</a></li><li class="chapter-item expanded "><a href="exherbo/requirements.html"><strong aria-hidden="true">3.2.</strong> Requirements</a></li><li class="chapter-item expanded "><a href="exherbo/prequerities.html"><strong aria-hidden="true">3.3.</strong> Prequerities</a></li><li class="chapter-item expanded "><a href="exherbo/partitioning.html"><strong aria-hidden="true">3.4.</strong> Partitioning</a></li><li class="chapter-item expanded "><a href="exherbo/mount_extract.html"><strong aria-hidden="true">3.5.</strong> Mount &amp; Extract Stage</a></li><li class="chapter-item expanded "><a href="exherbo/chroot.html"><strong aria-hidden="true">3.6.</strong> Chrooting</a></li><li class="chapter-item expanded "><a href="exherbo/dns.html"><strong aria-hidden="true">3.7.</strong> DNS</a></li><li class="chapter-item expanded "><a href="exherbo/fstab.html"><strong aria-hidden="true">3.8.</strong> Configure fstab</a></li><li class="chapter-item expanded "><a href="exherbo/kernel.html"><strong aria-hidden="true">3.9.</strong> Kernel</a></li><li class="chapter-item expanded "><a href="exherbo/paludis_config.html"><strong aria-hidden="true">3.10.</strong> Paludis Configuration</a></li><li class="chapter-item expanded "><a href="exherbo/rebuild_upgrade.html"><strong aria-hidden="true">3.11.</strong> Rebuild &amp; Upgrade</a></li><li class="chapter-item expanded "><a href="exherbo/init.html"><strong aria-hidden="true">3.12.</strong> init</a></li><li class="chapter-item expanded "><a href="exherbo/boot.html"><strong aria-hidden="true">3.13.</strong> Booting</a></li><li class="chapter-item expanded "><a href="exherbo/hostname.html"><strong aria-hidden="true">3.14.</strong> Hostname</a></li><li class="chapter-item expanded "><a href="exherbo/hosts.html"><strong aria-hidden="true">3.15.</strong> Hosts</a></li><li class="chapter-item expanded "><a href="exherbo/additional.html"><strong aria-hidden="true">3.16.</strong> Additional Settings</a></li><li class="chapter-item expanded "><a href="exherbo/user_creation.html"><strong aria-hidden="true">3.17.</strong> User Creation</a></li><li class="chapter-item expanded "><a href="exherbo/finalizing.html"><strong aria-hidden="true">3.18.</strong> Finalizing</a></li><li class="chapter-item expanded "><a href="exherbo/final_step.html"><strong aria-hidden="true">3.19.</strong> Final Step</a></li></ol></li></ol>
+            </div>
+            <div id="sidebar-resize-handle" class="sidebar-resize-handle"></div>
+        </nav>
+
+        <div id="page-wrapper" class="page-wrapper">
+
+            <div class="page">
+                
+                <div id="menu-bar-hover-placeholder"></div>
+                <div id="menu-bar" class="menu-bar sticky bordered">
+                    <div class="left-buttons">
+                        <button id="sidebar-toggle" class="icon-button" type="button" title="Toggle Table of Contents" aria-label="Toggle Table of Contents" aria-controls="sidebar">
+                            <i class="fa fa-bars"></i>
+                        </button>
+                        <button id="theme-toggle" class="icon-button" type="button" title="Change theme" aria-label="Change theme" aria-haspopup="true" aria-expanded="false" aria-controls="theme-list">
+                            <i class="fa fa-paint-brush"></i>
+                        </button>
+                        <ul id="theme-list" class="theme-popup" aria-label="Themes" role="menu">
+                            <li role="none"><button role="menuitem" class="theme" id="light">Light (default)</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="rust">Rust</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="coal">Coal</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="navy">Navy</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="ayu">Ayu</button></li>
+                        </ul>
+                        
+                        <button id="search-toggle" class="icon-button" type="button" title="Search. (Shortkey: s)" aria-label="Toggle Searchbar" aria-expanded="false" aria-keyshortcuts="S" aria-controls="searchbar">
+                            <i class="fa fa-search"></i>
+                        </button>
+                        
+                    </div>
+
+                    <h1 class="menu-title">Distro Installation Manual</h1>
+
+                    <div class="right-buttons">
+                        
+                        <a href="print.html" title="Print this book" aria-label="Print this book">
+                            <i id="print-button" class="fa fa-print"></i>
+                        </a>
+                        
+                        
+                    </div>
+                </div>
+
+                
+                <div id="search-wrapper" class="hidden">
+                    <form id="searchbar-outer" class="searchbar-outer">
+                        <input type="search" name="search" id="searchbar" name="searchbar" placeholder="Search this book ..." aria-controls="searchresults-outer" aria-describedby="searchresults-header">
+                    </form>
+                    <div id="searchresults-outer" class="searchresults-outer hidden">
+                        <div id="searchresults-header" class="searchresults-header"></div>
+                        <ul id="searchresults">
+                        </ul>
+                    </div>
+                </div>
+                
+
+                <!-- Apply ARIA attributes after the sidebar and the sidebar toggle button are added to the DOM -->
+                <script type="text/javascript">
+                    document.getElementById('sidebar-toggle').setAttribute('aria-expanded', sidebar === 'visible');
+                    document.getElementById('sidebar').setAttribute('aria-hidden', sidebar !== 'visible');
+                    Array.from(document.querySelectorAll('#sidebar a')).forEach(function(link) {
+                        link.setAttribute('tabIndex', sidebar === 'visible' ? 0 : -1);
+                    });
+                </script>
+
+                <div id="content" class="content">
+                    <main>
+                        <h1><a class="header" href="#a-hrefhttpswwwarchlinuxorgarchlinuxa" id="a-hrefhttpswwwarchlinuxorgarchlinuxa"><a href=https://www.archlinux.org/>ArchLinux</a></a></h1>
+<p>A lightweight and flexible Linux distribution that tries to Keep It Simple.</p>
+<h1><a class="header" href="#note" id="note">Note</a></h1>
+<p>This is a easy guide to install minimal Archlinux base along with the kernel, Bootloader &amp; Networking.</p>
+<h1><a class="header" href="#requirements" id="requirements">Requirements</a></h1>
+<ul>
+<li>Minimum Knowledge on GNU/Linux</li>
+<li>Working Internet Connection</li>
+<li>Archlinux Live System</li>
+</ul>
+<h1><a class="header" href="#note-1" id="note-1">Note</a></h1>
+<ul>
+<li><code>/dev/sdx</code> | <code>x</code> is your preferred disk. Check by executing the command: <code>df -h</code> or <code>lsblk</code>.</li>
+<li>Examples: <code>/dev/sda1</code> for root &amp; <code>/dev/sda2</code> for boot partition respectively.</li>
+</ul>
+<h2><a class="header" href="#do-the-proper-partitioning-in-cfdisk" id="do-the-proper-partitioning-in-cfdisk">Do the proper Partitioning in <code>cfdisk</code></a></h2>
+<ul>
+<li>1 partition for <code>root</code> of any reasonable size (i.e <code>20GB</code>) [<code>/dev/sdx1</code>].</li>
+<li>1 partition for <code>boot</code> of any reasonable size (i.e <code>200MB</code>) [<code>/dev/sdx2</code>].</li>
+</ul>
+<pre><code class="language-bash">cfdisk /dev/sdx
+</code></pre>
+<h2><a class="header" href="#format-the-partitions" id="format-the-partitions">Format the Partitions</a></h2>
+<pre><code class="language-bash">mkfs.ext4 /dev/sdx1
+mkfs.fat -F 32 /dev/sdx2
+</code></pre>
+<h2><a class="header" href="#mount-root-partition" id="mount-root-partition">Mount root partition</a></h2>
+<pre><code class="language-bash">mount /dev/sdx1 /mnt
+</code></pre>
+<h2><a class="header" href="#install-arch-base-packages-linux-kernel--linux-firmware-driver" id="install-arch-base-packages-linux-kernel--linux-firmware-driver">Install arch-base packages, linux-kernel &amp; linux-firmware driver</a></h2>
+<pre><code class="language-bash">pacstrap /mnt base linux linux-firmware
+</code></pre>
+<h2><a class="header" href="#generate-fstab" id="generate-fstab">Generate <code>fstab</code></a></h2>
+<pre><code class="language-bash">genfstab -U /mnt &gt;&gt; /mnt/etc/fstab
+</code></pre>
+<h2><a class="header" href="#chroot-into-archlinux" id="chroot-into-archlinux">Chroot into Archlinux</a></h2>
+<pre><code class="language-bash">arch-chroot /mnt
+</code></pre>
+<h1><a class="header" href="#note-2" id="note-2">Note</a></h1>
+<ul>
+<li><code>HOSTNAME</code> is your preferred hostname.</li>
+<li>Example: <code>archlinux</code>.</li>
+</ul>
+<h2><a class="header" href="#update-hostname" id="update-hostname">Update Hostname</a></h2>
+<pre><code class="language-bash">printf &quot;$s\n&quot; HOSTNAME &gt;&gt; /etc/hostname
+</code></pre>
+<h2><a class="header" href="#update-hosts-file" id="update-hosts-file">Update Hosts File</a></h2>
+<ul>
+<li>Install <code>nano</code>: <code>pacman -Syy nano --noconfirm</code>.</li>
+<li>Edit <code>/etc/hosts</code> by executing <code>nano /etc/hosts</code> and add the following:</li>
+</ul>
+<pre><code class="language-bash">127.0.0.1    localhost
+::1          localhost
+</code></pre>
+<h2><a class="header" href="#install-networking" id="install-networking">Install Networking</a></h2>
+<pre><code class="language-bash">pacman -S networkmanager --noconfirm
+</code></pre>
+<h2><a class="header" href="#enable-networking-at-boot" id="enable-networking-at-boot">Enable Networking at boot</a></h2>
+<pre><code class="language-bash">systemctl enable NetworkManager.service
+</code></pre>
+<h2><a class="header" href="#setup-bootloader-grub" id="setup-bootloader-grub">Setup Bootloader (<code>GRUB</code>)</a></h2>
+<pre><code class="language-bash">pacman -S grub efibootmgr --noconfirm
+mkdir /boot/efi
+mount /dev/sdx2 /boot/efi
+grub-install --target=x86_64-efi --efi-directory=/boot/efi --bootloader-id=GRUB
+grub-mkconfig -o /boot/grub/grub.cfg
+</code></pre>
+<h2><a class="header" href="#set-root-password" id="set-root-password">Set <code>root</code> password</a></h2>
+<pre><code class="language-bash">passwd
+</code></pre>
+<h1><a class="header" href="#a-hrefhttpsgentooorggentooa" id="a-hrefhttpsgentooorggentooa"><a href=https://gentoo.org/>Gentoo</a></a></h1>
+<p>A highly flexible, source-based Linux distribution.</p>
+<h1><a class="header" href="#note-3" id="note-3">Note</a></h1>
+<p>This guide uses Heavily Optimized <a href=https://wiki.gentoo.org/wiki/Portage>Portage</a> Config, thus some <strong>packages May Break</strong> (unlikely). User can change the config or borrow/cherry-pick information(s) from this guide to fit their personal needs. The portage configuration is based of my own personal system's portage config. </p>
+<h2><a class="header" href="#this-guide-uses" id="this-guide-uses">This guide uses</a></h2>
+<ul>
+<li>Gentoo Stage 3</li>
+<li>Linux Kernel (pf &amp; ck)</li>
+<li>GNU userland</li>
+<li>Openrc/sysinit (init system)</li>
+<li>Sysklogd (system logger)</li>
+<li>Grub2 &amp; EFISTUB (Booting Methods)</li>
+<li>Glibc (C standard library)</li>
+<li>Openssl (cryptography library)</li>
+<li>pulseaudio (sound server)</li>
+<li><code>-03</code> GCC optimization</li>
+<li>LOCALE: <code>en_US.utf8</code></li>
+<li>xinerama (multi-monitor support)</li>
+<li>tcmalloc (Fast, multi-threaded <code>malloc</code> implementation)</li>
+<li>AMD64 Desktop Profile (17.1) with other use-flags</li>
+<li>BTRFS filesystem for Root partition (no separate home partition)</li>
+<li>EFI (vfat/fat32) for Boot partition</li>
+<li>Global optimization use flags enabled: <code>graphite</code>, <code>lto</code> &amp; <code>pgo</code></li>
+<li>True 64 Bit applications (no multilib support)</li>
+<li>TMPFS</li>
+<li>Disabled Tests &amp; debugging</li>
+<li>Performance focused (Non-hardened system)</li>
+<li>Disabled Wireless and additional devices functionality (i.e bluetooth, printing, WIFI, joystick)</li>
+</ul>
+<h1><a class="header" href="#requirements-1" id="requirements-1">Requirements</a></h1>
+<ul>
+<li>Moderate Knowledge on GNU/Linux</li>
+<li>AMD64/x86_64 Machine</li>
+<li>Working Internet Connection</li>
+<li>A live Unix system (Linux Recommended)</li>
+</ul>
+<h2><a class="header" href="#preparing-a-live-unix-system" id="preparing-a-live-unix-system">Preparing a live Unix System</a></h2>
+<p>Download and boot into any Live ISO or existing primary system (i.e your linux system).</p>
+<ul>
+<li>Recommended Live ISO: <a href=https://www.system-rescue-cd.org>SystemRescueCD</a></li>
+</ul>
+<h2><a class="header" href="#prepare-the-storage-drives" id="prepare-the-storage-drives">Prepare the storage drives</a></h2>
+<p>Create a boot and root partition of any size. Recommended at-least <code>300MB</code> for boot &amp; <code>40GB</code> for root partition.</p>
+<ul>
+<li>NOTE: <code>&lt;superuser&gt;</code> -&gt; <code>sudo</code>/<code>doas</code> or <code>X</code>.</li>
+</ul>
+<ul>
+<li>Prepare them: <code>&lt;superuser&gt; cfdisk /dev/sdx</code> (<code>x</code> is your preferred storage. Check by executing the command: <code>df -h</code> or <code>lsblk</code>).</li>
+<li>Format the filesystems for each partition:
+<ul>
+<li>root partition: <code>&lt;superuser&gt; mkfs.btrfs /dev/sdx1</code>.</li>
+<li>boot partition: <code>&lt;superuser&gt; mkfs.vfat -F32 /dev/sdx2</code>.</li>
+</ul>
+</li>
+</ul>
+<h2><a class="header" href="#mounting--extracting-gentoo-tarball-stage" id="mounting--extracting-gentoo-tarball-stage">Mounting &amp; Extracting Gentoo Tarball Stage</a></h2>
+<ul>
+<li>Create a mount directory for mounting root partition: <code>&lt;superuser&gt; mkdir /mnt/gentoo</code>.</li>
+<li>Mount root directory in <code>/mnt/gentoo</code>: <code>&lt;superuser&gt; mount /dev/sdx1 /mnt/gentoo</code>.</li>
+<li>Change into the mounted directory: <code>cd /mnt/gentoo</code>.</li>
+<li>Get the latest stage3 tarball download link from <a href=https://www.gentoo.org/downloads/>gentoo.org/downloads</a></li>
+<li>Download the latest Gentoo Stage 3 tarball: <code>wget https://www.direct-download-link...</code>.</li>
+<li>Extract the tarball: <code>&lt;superuser&gt; tar xpvf stage3-*.tar.xz --xattrs-include='*.*' --numeric-owner</code>.</li>
+</ul>
+<h2><a class="header" href="#chrooting-into-gentoo" id="chrooting-into-gentoo">Chrooting into Gentoo</a></h2>
+<ul>
+<li>Create directory <code>repos.conf</code> if does not exist: <code>&lt;superuser&gt; mkdir --parents /mnt/gentoo/etc/portage/repos.conf</code>.</li>
+<li>Copy the Gentoo repository configuration file provided by Portage to the <code>repos.conf</code> directory: <code>&lt;superuser&gt; cp /mnt/gentoo/usr/share/portage/config/repos.conf /mnt/gentoo/etc/portage/repos.conf/gentoo.conf</code>.</li>
+<li>Copy DNS info: <code>cp /etc/resolv.conf /mnt/gentoo/etc/</code>.</li>
+<li>Mounting the necessary filesystems for chrooting:</li>
+</ul>
+<pre><code>&lt;superuser&gt; mount --types proc /proc /mnt/gentoo/proc
+&lt;superuser&gt; mount --rbind /sys /mnt/gentoo/sys
+&lt;superuser&gt; mount --rbind /dev /mnt/gentoo/dev
+</code></pre>
+<ul>
+<li>Chroot into gentoo: <code>&lt;superuser&gt; chroot /mnt/gentoo /bin/bash</code>.</li>
+<li>Reload the settings of <code>/etc/profile</code> in memory: <code>source /etc/profile</code>.</li>
+<li>Mount Boot partition: <code>&lt;superuser&gt; mount /dev/sdx2 /boot/</code>.</li>
+</ul>
+<h2><a class="header" href="#configuring-dns" id="configuring-dns">Configuring DNS</a></h2>
+<ul>
+<li>Change live system's DNS: <code>&lt;superuser&gt; nano /etc/resolv.conf</code> and add the following:</li>
+</ul>
+<pre><code class="language-bash">nameserver 8.8.8.8 # Google
+nameserver 1.1.1.1 # Cloudflare
+</code></pre>
+<h2><a class="header" href="#configuring-portage" id="configuring-portage">Configuring Portage</a></h2>
+<ul>
+<li>Fetch the latest snapshot of the Gentoo ebuild repository: <code>emerge-webrsync</code>.</li>
+<li>(<strong>OPTIONAL</strong>) Updating the Gentoo ebuild repository: <code>emerge --sync</code>.</li>
+<li>Select the desktop profile for the system: <code>eselect profile set default/linux/amd64/17.1/desktop</code>.</li>
+</ul>
+<h2><a class="header" href="#configuring-portage-config" id="configuring-portage-config">Configuring Portage Config</a></h2>
+<ul>
+<li>Edit by executing <code>nano /etc/portage/make.conf</code> and add the following:</li>
+</ul>
+<pre><code class="language-bash"># Flags
+# if on intel cpu add &quot;-falign-functions=32&quot; in COMMON_FLAGS
+COMMON_FLAGS=&quot;-O3 -pipe -march=native -mtune=native&quot;
+CFLAGS=&quot;${COMMON_FLAGS}&quot;
+CXXFLAGS=&quot;${COMMON_FLAGS}&quot;
+FCFLAGS=&quot;${COMMON_FLAGS}&quot;
+FFLAGS=&quot;${COMMON_FLAGS}&quot;
+FDFLAGS=&quot;-Wl,-O3 -Wl, -pthread -lpthread&quot;
+LDFLAGS=&quot;-Wl,-O3 -Wl,--as-needed -Wl,--sort-common -Wl,--hash-style=gnu&quot;
+# Can be found using https://packages.gentoo.org/packages/app-portage/cpuid2cpuflags
+CPU_FLAGS_X86=&quot;TO-BE-FILLED-BY-THE-USER&quot;
+CHOST=&quot;x86_64-pc-linux-gnu&quot;
+CBUILD=&quot;x86_64-pc-linux-gnu&quot;
+# Check https://wiki.gentoo.org/wiki/Category:Video_cards
+VIDEO_CARDS=&quot;TO-BE-FILLED-BY-THE-USER&quot;
+
+# USE FLAGS
+BOOTSTRAP_USE=&quot;unicode internal-glib pkg-config split-usr python_targets_python3_7 python_targets_python2_7 -multilib&quot;
+USE=&quot;-test -fortan -systemd -consolekit -debug -wifi -cups -cdr -ipod -bluetooth -hardened -multilib -samba \
+     btrfs ext4 fat elogind unicode dbus man pulseaudio ssl tcmalloc graphite lto xinerama gnome-keyring icu \
+     ffmpeg blueray jpeg jpeg2k json openssl alsa pgo jumbo-build gtk X gles2 policykit opengl threads \
+     png posix pic rar zip raw quicktime sound ithreads unzip udf secure-delete x264 x265 \
+     zeroconf theora 10bit 12bit 7z 7zip mpi-threads offensive bash-completion&quot;
+
+
+# Package specific
+SHELL=&quot;/bin/bash&quot;
+# Check https://wiki.gentoo.org/wiki/Microcode
+MICROCODE_SIGNATURES=&quot;-s TO-BE-FILLED-BY-THE-USER&quot;
+DEFAULT_ABI=&quot;amd64&quot;
+DISPLAY=&quot;:0&quot;
+ARCH=&quot;amd64&quot;
+ABI=&quot;amd64&quot;
+ABI_X86=&quot;64&quot;
+LIBDIR_amd64=&quot;lib64&quot;
+ACCEPT_KEYWORDS=&quot;amd64 ~amd64&quot;
+ACCEPT_LICENSE=&quot;-* @FREE&quot;
+ACCEPT_PROPERTIES=&quot;*&quot;
+ACCEPT_RESTRICT=&quot;*&quot;
+GRUB_PLATFORMS=&quot;efi-64&quot;
+CURL_SSL=&quot;openssl&quot;
+IUSE_IMPLICIT=&quot;abi_x86_64 prefix prefix-guest prefix-stack&quot;
+KERNEL=&quot;linux&quot;
+USERLAND=&quot;GNU&quot;
+ELIBC=&quot;glibc&quot;
+GSETTINGS_BACKEND=&quot;dconf&quot;
+INPUT_DEVICES=&quot;libinput&quot;
+MANPAGER=&quot;manpager&quot;
+
+# Protection
+CONFIG_PROTECT=&quot;/boot/grub/grub.cfg /etc /etc/environment /etc/fstab /etc/hostname /etc/hosts /etc/resolv.conf \
+                /usr/share/config /usr/share/gnupg/qualified.txt&quot;
+CONFIG_PROTECT_MASK=&quot;/etc/ca-certificates.conf /etc/dconf /etc/env.d /etc/fonts/fonts.conf /etc/gconf \
+                     /etc/gentoo-release /etc/revdep-rebuild /etc/sandbox.d /etc/terminfo&quot;
+COLLISION_IGNORE=&quot;/lib/modules/*&quot;
+UNINSTALL_IGNORE=&quot;/lib/modules/* /var/run /var/lock&quot;
+
+# Miscellaneous
+I_KNOW_WHAT_I_AM_DOING=y
+USER=&quot;root&quot;
+TERM=&quot;xterm-256color&quot;
+COLORTERM=&quot;truecolor&quot;
+FEATURES=&quot;-news -test -fakeroot fail-clean assume-digests binpkg-docompress binpkg-dostrip binpkg-logs candy \
+          preserve-libs config-protect-if-modified distlocks ebuild-locks fixlafiles ipc-sandbox merge-sync \
+          multilib-strict network-sandbox parallel-fetch parallel-install pid-sandbox sandbox \
+          protect-owned qa-unresolved-soname-deps sfperms strict unknown-features-warn \
+          unmerge-logs unmerge-orphans userfetch userpriv usersandbox usersync xattr&quot;
+CALLIGRA_FEATURES=&quot;karbon sheets words&quot;
+BINPKG_COMPRESS=&quot;bzip2&quot;
+LESS=&quot;-R -M --shift 5&quot;
+LESSOPEN=&quot;|lesspipe %s&quot;
+PORTAGE_VERBOSE=&quot;1&quot;
+EMERGE_WARNING_DELAY=&quot;2&quot;
+CLEAN_DELAY=&quot;0&quot;
+PORTAGE_DEBUG=&quot;0&quot;
+NOCOLOR=&quot;false&quot;
+AUTOCLEAN=&quot;yes&quot;
+EMERGE_DEFAULT_OPTS=&quot;--ask --deep --tree --verbose --complete-graph=y --verbose-conflicts \
+                     --with-bdeps=y --quiet-build=y --keep-going=y&quot;
+# N to be replaced with the number of total threads on the system
+MAKEOPTS=&quot;-jN --no-print-directory&quot;
+PORTAGE_NICENESS=&quot;-5&quot;
+ROOT=&quot;/&quot;
+SYSROOT=&quot;/&quot;
+LOGNAME=&quot;root&quot;
+HOME=&quot;/root&quot;
+EROOT=&quot;/&quot;
+ESYSROOT=&quot;/&quot;
+GPSD_PROTOCOLS=&quot;ashtech aivdm earthmate evermore fv18 garmin garmintxt gpsclock greis isync itrax mtk3301 nmea \
+                ntrip navcom oceanserver oldstyle oncore rtcm104v2 rtcm104v3 sirf skytraq superstar2 \
+                timing tsip tripmate tnt ublox ubx&quot;
+PORTAGE_RSYNC_OPTS=&quot;--recursive --links --safe-links --perms --times --omit-dir-times --compress \
+                    --force --whole-file --delete --stats --human-readable --timeout=180 \
+                    --exclude=/distfiles --exclude=/local --exclude=/packages --exclude=/.git&quot;
+FETCHCOMMAND=&quot;wget -t 3 -T 60 --passive-ftp -O &quot;${DISTDIR}/${FILE}&quot; &quot;${URI}&quot;&quot;
+FETCHCOMMAND_RSYNC=&quot;rsync -LtvP &quot;${URI}&quot; &quot;${DISTDIR}/${FILE}&quot;&quot;
+
+
+# Portage Hierarchy
+PORTAGE_TMPDIR=&quot;/var/tmp&quot;
+PORTAGE_CONFIGROOT=&quot;/&quot;
+PORTAGE_DEPCACHEDIR=&quot;/var/cache/edb/dep&quot;
+PORTDIR=&quot;/var/db/repos/gentoo&quot;
+DISTDIR=&quot;/var/cache/distfiles&quot;
+PKGDIR=&quot;/var/cache/binpkgs&quot;
+PORTAGE_LOGDIR=&quot;/var/log/portage&quot;
+
+# Language
+LINGUAS=&quot;en en_US&quot;
+LANG=&quot;en_US.UTF8&quot;
+LC_ALL=&quot;en_US.UTF-8&quot;
+LC_MESSAGES=C
+
+# Mirrors
+GENTOO_MIRRORS=&quot;http://distfiles.gentoo.org&quot;
+</code></pre>
+<ul>
+<li>Edit by executing <code>nano /etc/portage/package.use</code> and add the following:</li>
+</ul>
+<pre><code class="language-bash"># User Sets #
+sys-devel/gcc pgo graphite lto -ada -d -objc
+dev-vcs/git curl blksha1
+net-libs/nodejs npm
+sys-devel/llvm gold
+www-client/chromium tcmalloc -hangouts -official -wayland
+media-video/ffmpeg openssl fdk
+media-libs/mesa vulkan
+x11-misc/picom config-file opengl
+app-crypt/pinentry gnome-keyring
+sys-libs/glibc -multilib
+net-print/cups-filters -pdf
+app-emulation/qemu usbredir spice
+app-emulation/libvirt virt-network virtualbox libvirtd fuse
+sys-apps/usermode-utilities fuse
+net-dns/dnsmasq script
+media-libs/mlt jack frei0r melt kdenlive
+app-editors/emacs xft
+sys-apps/kmod lzma zlib
+dev-qt/qtwidgets gtk
+net-misc/spice-gtk usbredir
+sys-libs/zlib static-libs
+app-editors/vim X terminal
+media-libs/libsdl2 haptic
+www-client/firefox pgo lto clang custom-optimization gmp-autoupdate hwaccel pulseaudio screenshot startup-notification system-av1 system-icu system-jpeg system-libevent system-libvpx system-sqlite system-webp -bindist -eme-free -geckodriver -jack
+dev-lang/rust clippy doc -libressl rls rustfmt -nightly -parallel-compiler -system-bootstrap -wasm
+sys-kernel/linux-firmware savedconfig
+app-portage/layman sync-plugin-portage git
+media-plugins/alsa-plugins pulseaudio
+x11-base/xorg-drivers libinput
+x11-base/xorg-server elogind xvfb
+sys-apps/openrc -netifrc
+net-misc/networkmanager -wex
+</code></pre>
+<h2><a class="header" href="#upgrading-the-system" id="upgrading-the-system">Upgrading the system</a></h2>
+<ul>
+<li>Rebuild all the packages &amp; Update the system's <code>@world</code> set: <code>emerge -qeuvNDU --jobs=&quot;$(nproc)&quot; --with-bdeps=y --keep-going @world</code>.</li>
+</ul>
+<h2><a class="header" href="#installing-the-linux-kernel" id="installing-the-linux-kernel">Installing The Linux Kernel</a></h2>
+<ul>
+<li>
+<p><strong>METHOD 1</strong> (linux-pf)</p>
+<ul>
+<li>Merge the pf kernel: <code>emerge -q sys-kernel/pf-sources</code>.</li>
+<li>Select the kernel: <code>eselect kernel set 1</code>.</li>
+<li>Change the directory: <code>cd /usr/src/linux</code>.</li>
+<li>Configure the kernel using menu-driven configuration screen: <code>make --jobs &quot;$(nproc || printf '%s\n' 1)&quot; menuconfig</code>.</li>
+<li><strong>OR</strong> Configure the kernel (Update current config disabling modules not loaded): <code>make --jobs &quot;$(nproc || printf '%s\n' 1)&quot; localmodconfig</code>.</li>
+<li>Compile the kernel: <code>make --jobs &quot;$(nproc || printf '%s\n' 1)&quot;</code>.</li>
+<li>Install the kernel modules: <code>make --jobs &quot;$(nproc || printf '%s\n' 1)&quot; modules_install</code>.</li>
+<li>Copy the kernel image to <code>/boot/</code>: <code>make --jobs &quot;$(nproc || printf '%s\n' 1)&quot; install</code>.</li>
+</ul>
+</li>
+<li>
+<p><strong>METHOD 2</strong> (linux) (<strong>RECOMMENDED</strong>)</p>
+<ul>
+<li>Create the directory if not exist: <code>mkdir -p /usr/src/</code>.</li>
+<li>Change to the directory: <code>cd /usr/src/</code>.</li>
+<li>Download the latest stable kernel from <a href="https://www.kernel.org/">kernel.org</a>: <code>wget https://cdn.kernel.org/pub/linux/kernel/vx.x/linux-x.x.x.tar.xz</code>.</li>
+<li>Extract the kernel: <code>tar -xvf linux-x.x.x.tar.xz</code>.</li>
+<li>Change the kernel directory name: <code>mv linux-x.x.x.tar.xz linux</code>.</li>
+<li>Change to the kernel directory: <code>cd linux</code>.</li>
+<li>Configure the kernel using menu-driven configuration screen: <code>make --jobs &quot;$(nproc || printf '%s\n' 1)&quot; menuconfig</code>.</li>
+<li><strong>OR</strong> Configure the kernel (Update current config disabling modules not loaded): <code>make --jobs &quot;$(nproc || printf '%s\n' 1)&quot; localmodconfig</code>.</li>
+<li>Compile the kernel: <code>make --jobs &quot;$(nproc || printf '%s\n' 1)&quot; make</code>.</li>
+<li>Install the kernel modules: <code>make --jobs &quot;$(nproc || printf '%s\n' 1)&quot; modules_install</code>.</li>
+<li>Copy the kernel image to <code>/boot/</code>: <code>make --jobs &quot;$(nproc || printf '%s\n' 1)&quot; install</code>.</li>
+</ul>
+</li>
+</ul>
+<h2><a class="header" href="#installing-firmware" id="installing-firmware">Installing <code>firmware</code></a></h2>
+<ul>
+<li>Install the firmware: <code>emerge -q sys-kernel/linux-firmware</code>.</li>
+<li>Install additional useful softwares (optional): <code>emerge -q app-portage/eix app-portage/layman app-portage/portage-utils app-portage/gentoolkit app-portage/genlop app-eselect/eselect-repository sys-fs/btrfs-progs sys-fs/e2fsprogs sys-fs/dosfstools app-portage/ufed app-portage/pgo app-portage/esearch</code>.</li>
+</ul>
+<h2><a class="header" href="#configuring-the-system" id="configuring-the-system">Configuring the system</a></h2>
+<ul>
+<li>Set root password: <code>passwd</code>.</li>
+<li>Add the language environment <code>en_US.UTF-8</code>: <code>echo &quot;en_US.UTF-8 UTF-8&quot; &gt; /etc/locale.gen</code>.</li>
+<li>Generate locales specified in <code>/etc/locale.gen</code>: <code>locale-gen</code>.</li>
+<li>Set the locale: <code>eselect locale set en_US.utf8</code>.</li>
+<li>Reload the environment: <code>env-update ; source /etc/profile</code>.</li>
+<li>Set system timezone: <code>ln -s /usr/share/zoneinfo/Asia/Dhaka /etc/localtime</code>.</li>
+<li>Reconfigure the <code>timezone-data</code> package: <code>emerge --config sys-libs/timezone-data</code>.</li>
+<li>Install <code>mlocate</code> (provides faster file location capabilities): <code>emerge -q sys-apps/mlocate</code>.</li>
+</ul>
+<h2><a class="header" href="#update-fstab" id="update-fstab">Update fstab</a></h2>
+<ul>
+<li>Edit by executing <code>nano /etc/fstab</code> and add the following:</li>
+</ul>
+<pre><code class="language-bash"># System #
+/dev/sdx2   /boot  vfat    defaults,noatime  0 0
+/dev/sdx1   /      btrfs   noatime           0 0</code></pre>
+<h2><a class="header" href="#tmpfs" id="tmpfs"><code>TMPFS</code></a></h2>
+<p><code>N</code> to be replaced with the amount of max ram tmpfs can access, i.e <code>8</code>.</p>
+<pre><code class="language-bash">tmpfs /var/tmp         tmpfs rw,nosuid,noatime,nodev,size=NG,mode=1777 0 0
+tmpfs /var/tmp/portage tmpfs rw,nosuid,noatime,nodev,size=NG,mode=775,uid=portage,gid=portage,x-mount.mkdir=775 0 0
+</code></pre>
+<h2><a class="header" href="#updating-the-hostname" id="updating-the-hostname">Updating the hostname</a></h2>
+<ul>
+<li>Edit by executing <code>nano /etc/conf.d/hostname</code> and change/update according to the following:</li>
+</ul>
+<pre><code class="language-bash">hostname=&quot;gentoo&quot;
+</code></pre>
+<h2><a class="header" href="#updating-the-hosts-file" id="updating-the-hosts-file">Updating the hosts file</a></h2>
+<ul>
+<li>Edit by executing <code>nano /etc/hosts</code> and change/update according to the following:</li>
+</ul>
+<pre><code class="language-bash">127.0.0.1       gentoo    localhost
+::1             gentoo    localhost
+</code></pre>
+<h2><a class="header" href="#configuring-the-network" id="configuring-the-network">Configuring the network</a></h2>
+<p>If the system has several/Different network interface check invoking <code>ifconfig</code> and set the proper network interface. Example: <code>eth0</code>, <code>enp2s0</code>, <code>enp3s0</code>.</p>
+<ul>
+<li>Edit by executing <code>nano /etc/conf.d/net</code> and add: <code>config_enp2s0=&quot;dhcp&quot;</code>.</li>
+<li>To Automatically start networking at boot executing the following commands:</li>
+</ul>
+<pre><code>cd /etc/init.d
+ln -s net.lo net.enp2s0
+rc-update add net.enp2s0 default
+</code></pre>
+<h2><a class="header" href="#installing-system-logger" id="installing-system-logger">Installing System logger</a></h2>
+<ul>
+<li>Install <code>sysklogd</code>: <code>emerge -q app-admin/sysklogd</code>.</li>
+<li>Add it to the default runlevel: <code>rc-update add sysklogd default</code>.</li>
+</ul>
+<h2><a class="header" href="#improve-boot-time" id="improve-boot-time">Improve Boot Time</a></h2>
+<ul>
+<li>Remove the default config: <code>rm /etc/rc.conf</code></li>
+<li>Edit by executing <code>nano /etc/rc.conf</code> and add the following:</li>
+</ul>
+<pre><code class="language-bash"># Global OpenRC configuration settings
+rc_parallel=&quot;YES&quot;
+rc_interactive=&quot;NO&quot;
+rc_shell=/sbin/sulogin
+rc_logger=&quot;NO&quot;
+rc_verbose=&quot;YES&quot;
+rc_nocolor=NO
+unicode=&quot;YES&quot;
+SSD_NICELEVEL=&quot;-19&quot;
+rc_tty_number=12
+rc_send_sighup=&quot;YES&quot;
+rc_timeout_stopsec=&quot;8&quot;
+rc_send_sigkill=&quot;YES&quot;
+</code></pre>
+<h2><a class="header" href="#setting-up-booting" id="setting-up-booting">Setting up Booting</a></h2>
+<ul>
+<li>
+<p><strong>METHOD 1</strong> (GRUB2)</p>
+<ul>
+<li>Install <code>grub2</code>: <code>emerge -q sys-boot/grub:2</code>.</li>
+<li>Install the necessary GRUB2 files to the <code>/boot/grub/</code> directory: <code>grub-install --target=x86_64-efi --efi-directory=/boot</code>.</li>
+<li>Generate grub2 configuration: <code>grub-mkconfig -o /boot/grub/grub.cfg</code>.</li>
+</ul>
+</li>
+<li>
+<p><strong>METHOD 2</strong> (EFISTUB) (<strong>RECOMMENDED</strong>)</p>
+</li>
+</ul>
+<ul>
+<li>In order to boot directly from UEFI, the kernel needs to know where to find the root (/) partition of the system to be booted. Follow the guide showing what exact things needs to configued in the kernel: https://wiki.gentoo.org/wiki/EFI_stub_kernel for EFISTUB. Then:
+<ul>
+<li>Install <code>efibootmgr</code>: <code>emerge -q sys-boot/efibootmgr</code>.</li>
+<li>Create the directory where the kernel image will be installed: <code>mkdir -p /boot/EFI/Gentoo</code>.</li>
+<li>Copy the kernel image to appropriate place: <code>cp /usr/src/linux/arch/x86/boot/bzImage /boot/EFI/Gentoo/bzImage.efi</code>.</li>
+<li>Create a EFI Boot entry for the kernel image to boot: <code>efibootmgr -c -d /dev/sdx -p 2 -L &quot;Gentoo&quot; -l '\EFI\Gentoo\bzImage.efi'</code>.</li>
+</ul>
+</li>
+</ul>
+<h2><a class="header" href="#creating-a-user" id="creating-a-user">Creating a User</a></h2>
+<pre><code>audio 	 Be able to access the audio devices.
+cdrom 	 Be able to directly access optical devices.
+floppy 	 Be able to directly access floppy devices.
+games 	 Be able to play games.
+portage  Be able to access portage restricted resources.
+usb      Be able to access USB devices.
+video 	 Be able to access video capturing hardware and doing hardware acceleration.
+wheel 	 Be able to use su.
+</code></pre>
+<ul>
+<li>Create a user with all the permissions: <code>useradd -m -G users,wheel,audio,video,usb -s /bin/bash username</code>.</li>
+<li>add a password for the user: <code>passwd username</code>.</li>
+</ul>
+<h2><a class="header" href="#finalizing" id="finalizing">Finalizing</a></h2>
+<ul>
+<li>Remove the Gentoo Tarball Stage: <code>rm /stage3-*.tar.*</code>.</li>
+</ul>
+<h2><a class="header" href="#final-step" id="final-step">Final Step</a></h2>
+<ul>
+<li>Reboot the machine and boot into Gentoo.</li>
+</ul>
+<h1><a class="header" href="#a-hrefhttpsexherboorgexherboa" id="a-hrefhttpsexherboorgexherboa"><a href=https://exherbo.org/>Exherbo</a></a></h1>
+<p>A Source based Linux distribution with up-front configuration.</p>
+<h1><a class="header" href="#note-4" id="note-4">Note</a></h1>
+<p>This guide uses Heavily Optimized <a href=https://paludis.exherbo.org/>Paludis</a> Config, thus some <strong>packages May Break</strong>.</p>
+<h2><a class="header" href="#this-guide-uses-1" id="this-guide-uses-1">This guide uses</a></h2>
+<ul>
+<li>Latest x86_64 Exherbo Stage</li>
+<li>Linux Kernel (ck)</li>
+<li>GNU userland</li>
+<li>Systemd (init system)</li>
+<li>Grub2 &amp; EFISTUB (Booting Methods)</li>
+<li>Glibc (C standard library)</li>
+<li>Openssl (cryptography library)</li>
+<li>pulseaudio (sound server)</li>
+<li>Aggressive <code>-Ofast</code> GCC optimization</li>
+<li>LOCALE: <code>en_US.utf8</code></li>
+<li>BTRFS filesystem for Root partition (no separate home partition)</li>
+<li>EFI (vfat/fat32) for Boot partition</li>
+<li>Disabled Tests &amp; debugging</li>
+</ul>
+<h1><a class="header" href="#requirements-2" id="requirements-2">Requirements</a></h1>
+<ul>
+<li>Moderate Knowledge on GNU/Linux</li>
+<li>AMD64/x86_64 Machine</li>
+<li>Working Internet Connection</li>
+<li>A live Unix system (Linux Recommended)</li>
+</ul>
+<h2><a class="header" href="#preparing-a-live-unix-system-1" id="preparing-a-live-unix-system-1">Preparing a live Unix System</a></h2>
+<p>Download and boot into any Live ISO or existing primary system (i.e your linux system).</p>
+<ul>
+<li>Recommended Live ISO: <a href=https://www.system-rescue-cd.org>SystemRescueCD</a></li>
+</ul>
+<h2><a class="header" href="#preparing-the-storage-drives" id="preparing-the-storage-drives">Preparing the storage drives</a></h2>
+<p>Create a boot and root partition of any size. Recommended at-least <code>300MB</code> for boot &amp; <code>40GB</code> for root partition.</p>
+<ul>
+<li>NOTE: <code>&lt;superuser&gt;</code> -&gt; <code>sudo</code>/<code>doas</code> or <code>X</code>.</li>
+</ul>
+<ul>
+<li>Prepare them: <code>&lt;superuser&gt; cfdisk /dev/sdx</code> (<code>x</code> -&gt; your preferred storage. Check by invoking the command: <code>df -h</code> or <code>lsblk</code>).</li>
+<li>Format the filesystems for each partition:
+<ul>
+<li>root partition: <code>&lt;superuser&gt; mkfs.btrfs /dev/sdx1</code>.</li>
+<li>boot partition: <code>&lt;superuser&gt; mkfs.vfat -F32 /dev/sdx2</code>.</li>
+</ul>
+</li>
+</ul>
+<h2><a class="header" href="#mounting--extracting-exherbo-tarball-stage" id="mounting--extracting-exherbo-tarball-stage">Mounting &amp; Extracting Exherbo Tarball Stage</a></h2>
+<ul>
+<li>Create a mount directory for mounting root partition: <code>&lt;superuser&gt; mkdir /mnt/exherbo</code>.</li>
+<li>Mount root directory in <code>/mnt/exherbo</code>: <code>&lt;superuser&gt; mount /dev/sdx1 /mnt/exherbo</code>.</li>
+<li>Change into the mounted directory: <code>cd /mnt/exherbo</code>.</li>
+<li>Download the latest Exherbo Tarball Stage: <code>&lt;superuser&gt; wget https://dev.exherbo.org/stages/exherbo-x86_64-pc-linux-gnu-current.tar.xz</code>.</li>
+<li>Extract the tarball: <code>&lt;superuser&gt; tar xJpf exherbo-x86_64-pc-linux-gnu-current.tar.xz</code>.</li>
+</ul>
+<h2><a class="header" href="#chrooting-into-exherbo" id="chrooting-into-exherbo">Chrooting into Exherbo</a></h2>
+<ul>
+<li>
+<p>Mount everything for chroot by invoking the following commands:</p>
+<ul>
+<li><code>&lt;superuser&gt; mount -o rbind /dev /mnt/exherbo/dev/</code>.</li>
+<li><code>&lt;superuser&gt; mount -o rbind /sys /mnt/exherbo/sys/</code>.</li>
+<li><code>&lt;superuser&gt; mount -t proc none /mnt/exherbo/proc/</code>.</li>
+<li>Boot partition: <code>&lt;superuser&gt; mount /dev/sdx2 /mnt/exherbo/boot/</code>.</li>
+</ul>
+</li>
+<li>
+<p>Chroot into Exherbo: <code>&lt;superuser&gt; chroot /mnt/exherbo /bin/bash</code>.</p>
+</li>
+<li>
+<p>Reload the settings of <code>/etc/profile</code> in memory: <code>source /etc/profile</code>.</p>
+</li>
+</ul>
+<h2><a class="header" href="#configuring-dns-1" id="configuring-dns-1">Configuring DNS</a></h2>
+<ul>
+<li>Change live system's DNS: <code>&lt;superuser&gt; nano /etc/resolv.conf</code> and add the following:</li>
+</ul>
+<pre><code>nameserver 8.8.8.8 # Google
+nameserver 1.1.1.1 # Cloudflare
+</code></pre>
+<h2><a class="header" href="#update-fstab-1" id="update-fstab-1">Update fstab</a></h2>
+<ul>
+<li>Edit by executing <code>vim /etc/fstab</code> and add the following:</li>
+</ul>
+<pre><code class="language-bash"># System #
+/dev/sdx2   /boot  vfat    defaults,noatime  0 0
+/dev/sdx1   /      btrfs   noatime           0 0
+</code></pre>
+<h2><a class="header" href="#installing-the-linux-kernel-1" id="installing-the-linux-kernel-1">Installing The Linux Kernel</a></h2>
+<ul>
+<li>Create the directory if not exist: <code>mkdir -p /usr/src/</code>.</li>
+<li>Change to the directory: <code>cd /usr/src/</code>.</li>
+<li>Download the latest stable kernel from <a href="https://www.kernel.org/">kernel.org</a>: <code>wget https://cdn.kernel.org/pub/linux/kernel/vx.x/linux-x.x.x.tar.xz</code>.</li>
+<li>Extract the kernel: <code>tar -xvf linux-x.x.x.tar.xz</code>.</li>
+<li>Change the kernel directory name: <code>mv linux-x.x.x.tar.xz linux</code>.</li>
+<li>Change to the kernel directory: <code>cd linux</code>.</li>
+<li>Configure the kernel using menu-driven configuration screen: <code>make --jobs &quot;$(nproc || printf '%s\n' 1)&quot; menuconfig</code>.</li>
+<li><strong>OR</strong> Configure the kernel (Update current config disabling modules not loaded): <code>make --jobs &quot;$(nproc || printf '%s\n' 1)&quot; localmodconfig</code>.</li>
+<li>Compile the kernel: <code>make --jobs &quot;$(nproc || printf '%s\n' 1)&quot; make</code>.</li>
+<li>Install the kernel modules: <code>make --jobs &quot;$(nproc || printf '%s\n' 1)&quot; modules_install</code>.</li>
+<li>Copy the kernel image to <code>/boot/</code>: <code>make --jobs &quot;$(nproc || printf '%s\n' 1)&quot; install</code>.</li>
+</ul>
+<h2><a class="header" href="#configure-paludis" id="configure-paludis">Configure Paludis</a></h2>
+<ul>
+<li>Edit by executing <code>vim /etc/paludis/bashrc</code> and add the following:</li>
+</ul>
+<pre><code class="language-bash">CHOST=&quot;x86_64-pc-linux-gnu&quot;
+CBUILD=&quot;x86_64-pc-linux-gnu&quot;
+
+FLAGS=&quot;$(echo {-f{devirtualize-at-ltrans,ipa-pta,lto=1,omit-frame-pointer}, \
+-fno-{plt,semantic-interposition,stack-protector},-m{arch,tune}=native} -Ofast -pipe -falign-functions=32)&quot;
+
+export x86_64_pc_linux_gnu=&quot;$FLAGS&quot;
+export x86_64_pc_linux_gnu_CFLAGS=&quot;$FLAGS&quot;
+export x86_64_pc_linux_gnu_CXXFLAGS=&quot;$FLAGS&quot;
+export x86_64_pc_linux_gnu_FFLAGS=&quot;$FLAGS&quot;
+export x86_64_pc_linux_gnu_FCFLAGS=&quot;$FLAGS&quot;
+export x86_64_pc_linux_gnu_FDFLAGS=&quot;-Wl,-O3 -Wl, -pthread -lpthread&quot;
+export x86_64_pc_linux_gnu_LDFLAGS=&quot;-Wl,-O3 -Wl,--as-needed -Wl,--sort-common -Wl,--hash-style=gnu&quot;
+
+# Config Protection
+CONFIG_PROTECT_MASK=&quot;/boot/grub/grub.cfg /etc/environment /etc/resolv.conf /etc/hosts /etc/hostname \
+                     /etc/fstab /usr/x86_64-pc-linux-gnu/lib/udev/rules.d /etc/ca-certificates.conf&quot;
+
+# Reduce SPAM from cmake based builds
+CMAKE_VERBOSE=OFF
+
+# Lang
+LC_ALL=&quot;en_US.UTF-8&quot;
+
+# Python breaks with -ffast-math.
+if [ &quot;${CATEGORY}/${PN}&quot; = &quot;dev-lang/python&quot; ] ; then
+  export x86_64_pc_linux_gnu=&quot;$FLAGS -O3&quot;
+fi
+</code></pre>
+<ul>
+<li>Edit by executing <code>vim /etc/paludis/options.conf</code> and add the following:</li>
+</ul>
+<pre><code class="language-bash">*/* -recommended_tests -fortan systemd dbus gtk threads alsa pulseaudio \
+    # N to be replaced with the number of total threads on the system
+    BUILD_OPTIONS: jobs=N symbols=strip work=tidyup \
+    TARGETS: -* x86_64-pc-linux-gnu \
+    PYTHON_ABIS: -* 3.7 \
+    INPUT_DRIVERS: -* libinput \
+    LINGUAS: -* en_US \
+    # AMD64_CPU_FEATURES: -* TO-BE-FILLED-BY-THE-USER \
+    # VIDEO_DRIVERS: -* TO-BE-FILLED-BY-THE-USER \
+    PROVIDERS: systemd journald systemd-logind openssl ffmpeg \
+    PARTS: systemd
+
+# Recommended on IRC #exherbo
+sys-apps/paludis -python
+
+# Local Use Flags #
+dev-vcs/git curl
+sys-apps/systemd curl
+</code></pre>
+<h2><a class="header" href="#updating-the-system" id="updating-the-system">Updating the system</a></h2>
+<ul>
+<li>Add some necessary repositories before syncing/updating: <code>cave resolve -x1 repository/{perl,python,gnome,x11,hardware}</code>.</li>
+<li>Sync all the trees by invoking: <code>cave sync</code>.</li>
+<li>Upgrade/Update necessary packages by executing: <code>cave resolve world -qx</code>.</li>
+</ul>
+<h2><a class="header" href="#systemd" id="systemd">Systemd</a></h2>
+<ul>
+<li>Re-install systemd in order to create a valid machine-id: <code>cave resolve -qx1 sys-apps/systemd</code>.</li>
+</ul>
+<h2><a class="header" href="#setting-up-booting-1" id="setting-up-booting-1">Setting up Booting</a></h2>
+<ul>
+<li>
+<p><strong>METHOD 1</strong> (GRUB2)</p>
+<ul>
+<li>Install <code>grub2</code>: <code>cave resolve -qx1 sys-boot/grub</code>.</li>
+<li>Install the necessary GRUB2 files to the <code>/boot/grub/</code> directory: <code>grub-install --target=x86_64-efi --efi-directory=/boot</code>.</li>
+<li>Generate grub2 configuration: <code>grub-mkconfig -o /boot/grub/grub.cfg</code>.</li>
+</ul>
+</li>
+<li>
+<p><strong>METHOD 2</strong> (EFISTUB) (<strong>RECOMMENDED</strong>)</p>
+</li>
+</ul>
+<ul>
+<li>In order to boot directly from UEFI, the kernel needs to know where to find the root (/) partition of the system to be booted. Follow the guide showing what exact things needs to configued in the kernel: https://wiki.gentoo.org/wiki/EFI_stub_kernel for EFISTUB. Then:
+<ul>
+<li>Install <code>efibootmgr</code>: <code>cave resolve -qx1 sys-boot/efibootmgr</code>.</li>
+<li>Create the directory where the kernel image will be installed: <code>mkdir -p /boot/EFI/Exherbo</code>.</li>
+<li>Copy the kernel image to appropriate place: <code>cp /usr/src/linux/arch/x86/boot/bzImage /boot/EFI/Exherbo/bzImage.efi</code>.</li>
+<li>Create a EFI Boot entry for the kernel image to boot: <code>efibootmgr -c -d /dev/sdx -p 2 -L &quot;Exherbo&quot; -l '\EFI\Exherbo\bzImage.efi'</code>.</li>
+</ul>
+</li>
+</ul>
+<h2><a class="header" href="#updating-the-hostname-1" id="updating-the-hostname-1">Updating the hostname</a></h2>
+<ul>
+<li>Edit by executing <code>vim /etc/conf.d/hostname</code> and change/update according to the following:</li>
+</ul>
+<pre><code class="language-bash">hostname=&quot;exherbo&quot;
+</code></pre>
+<h2><a class="header" href="#updating-the-hosts-file-1" id="updating-the-hosts-file-1">Updating the hosts file</a></h2>
+<ul>
+<li>Edit by executing <code>vim /etc/hosts</code> and change/update according to the following:</li>
+</ul>
+<pre><code class="language-bash">127.0.0.1       exherbo
+::1             exherbo
+</code></pre>
+<h2><a class="header" href="#additional-settings" id="additional-settings">Additional Settings</a></h2>
+<ul>
+<li>Set root password: <code>passwd</code>.</li>
+<li>Change the language environment to <code>en_US.UTF-8</code>: <code>echo LANG=&quot;en_US.UTF-8&quot; &gt; /etc/env.d/99locale</code>.</li>
+<li>Set system timezone: <code>ln -s /usr/share/zoneinfo/Asia/Dhaka /etc/localtime</code>.</li>
+</ul>
+<h2><a class="header" href="#creating-a-user-1" id="creating-a-user-1">Creating a User</a></h2>
+<pre><code class="language-bash">- Administrative Groups:
+  + adm   used for system monitoring tasks (e.g. journalctl)
+  + users traditional group for identifying user accounts (versus system/daemon accounts)
+  + wheel used to indicate permission to perform certain restricted operations (e.g.  su)
+
+- Device Access Groups:
+  + disk  allows access to various disk device nodes
+  + usb   allows access to usb device nodes
+  + audio allows access to audio device nodes
+  + video allows access to video device nodes (for accelerated video)
+</code></pre>
+<ul>
+<li>Create a user with all the permissions: <code>useradd -m -G adm,disk,wheel,cdrom,audio,video,usb,users username</code>.</li>
+<li>add a password for the user: <code>passwd username</code>.</li>
+</ul>
+<h2><a class="header" href="#finalizing-1" id="finalizing-1">Finalizing</a></h2>
+<ul>
+<li>Remove the Exherbo Tarball Stage: <code>rm -f /exherbo-x86_64-pc-linux-gnu-current.tar.xz</code>.</li>
+</ul>
+<h2><a class="header" href="#final-step-1" id="final-step-1">Final Step</a></h2>
+<ul>
+<li>Reboot the machine and boot into Exherbo.</li>
+</ul>
+
+                    </main>
+
+                    <nav class="nav-wrapper" aria-label="Page navigation">
+                        <!-- Mobile navigation buttons -->
+                        
+
+                        
+
+                        <div style="clear: both"></div>
+                    </nav>
+                </div>
+            </div>
+
+            <nav class="nav-wide-wrapper" aria-label="Page navigation">
+                
+
+                
+            </nav>
+
+        </div>
+
+        
+
+        
+
+        
+
+        
+        <script type="text/javascript">
+            window.playground_copyable = true;
+        </script>
+        
+
+        
+
+        
+        <script src="elasticlunr.min.js" type="text/javascript" charset="utf-8"></script>
+        <script src="mark.min.js" type="text/javascript" charset="utf-8"></script>
+        <script src="searcher.js" type="text/javascript" charset="utf-8"></script>
+        
+
+        <script src="clipboard.min.js" type="text/javascript" charset="utf-8"></script>
+        <script src="highlight.js" type="text/javascript" charset="utf-8"></script>
+        <script src="book.js" type="text/javascript" charset="utf-8"></script>
+
+        <!-- Custom JS scripts -->
+        
+
+        
+        
+        <script type="text/javascript">
+        window.addEventListener('load', function() {
+            window.setTimeout(window.print, 100);
+        });
+        </script>
+        
+        
+
+    </body>
+</html>
