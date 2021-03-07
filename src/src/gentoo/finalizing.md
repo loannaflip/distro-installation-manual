@@ -1,2 +1,2 @@
 ## Finalizing
-* Remove the Gentoo Tarball Stage: `rm /stage3-*.tar.*`.
+* Remove the Gentoo Stage Tarball: `rm /stage3-*.tar.*`.

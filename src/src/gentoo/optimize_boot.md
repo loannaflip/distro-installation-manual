@@ -1,6 +1,5 @@
 ## Improve Boot Time
-* Remove the default config: `rm /etc/rc.conf`
-* Edit by executing `nano /etc/rc.conf` and add the following:
+Remove the default config `rm /etc/rc.conf` and edit by executing `nano /etc/rc.conf` and add the following:
 ```bash
 # Global OpenRC configuration settings
 rc_parallel="YES"

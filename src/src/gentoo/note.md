@@ -4,7 +4,7 @@ This guide uses Heavily Optimized <a href=https://wiki.gentoo.org/wiki/Portage>P
 
 ## This guide uses
 * Gentoo Stage 3
-* Linux Kernel (pf & ck)
+* Linux Kernel (pf & mainline)
 * GNU userland
 * Openrc/sysinit (init system)
 * Sysklogd (system logger)
@@ -12,6 +12,8 @@ This guide uses Heavily Optimized <a href=https://wiki.gentoo.org/wiki/Portage>P
 * Glibc (C standard library)
 * Openssl (cryptography library)
 * pulseaudio (sound server)
+* Optimized Portage config
+* Aggressive Flags
 * `-03` GCC optimization
 * LOCALE: `en_US.utf8`
 * xinerama (multi-monitor support)

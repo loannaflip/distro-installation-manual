@@ -1,6 +1,6 @@
 ## Setting up Booting
 * **METHOD 1** (GRUB2)
-    - Install `grub2`: `emerge -q sys-boot/grub:2`.
+    - Install `grub2`: `emerge -q sys-boot/grub`.
     - Install the necessary GRUB2 files to the `/boot/grub/` directory: `grub-install --target=x86_64-efi --efi-directory=/boot`.
     - Generate grub2 configuration: `grub-mkconfig -o /boot/grub/grub.cfg`.
     

@@ -31,7 +31,6 @@
     - [Firmware](gentoo/firmware.md)
     - [System Configuration](gentoo/configure_system.md)
     - [Configure fstab](gentoo/fstab.md)
-    - [TMPFS](gentoo/tmpfs.md)
     - [Hostname](gentoo/hostname.md)
     - [Hosts](gentoo/hosts.md)
     - [Networking](gentoo/networking.md)

@@ -1,6 +1,6 @@
 ## Configuring DNS
-- Change live system's DNS: `<superuser> nano /etc/resolv.conf` and add the following:
+- Change live system's DNS:
 ```bash
-nameserver 8.8.8.8 # Google
-nameserver 1.1.1.1 # Cloudflare
+printf "%s\n" "nameserver 8.8.8.8 # Google" > /etc/resolv.conf
+printf "%s\n" "nameserver 1.1.1.1 # Cloudflare" >> /etc/resolv.conf
 ```

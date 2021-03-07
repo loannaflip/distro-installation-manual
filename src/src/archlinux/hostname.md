@@ -4,5 +4,5 @@
 
 ## Update Hostname
 ```bash
-printf "$s\n" HOSTNAME >> /etc/hostname
+printf "%s\n" "HOSTNAME" > /etc/hostname
 ```

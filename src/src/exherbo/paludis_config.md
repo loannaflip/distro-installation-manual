@@ -1,5 +1,5 @@
 ## Configure Paludis
-- Edit by executing `vim /etc/paludis/bashrc` and add the following:
+Edit by executing `vim /etc/paludis/bashrc` and add the following:
 
 ```bash
 CHOST="x86_64-pc-linux-gnu"
@@ -32,7 +32,7 @@ if [ "${CATEGORY}/${PN}" = "dev-lang/python" ] ; then
 fi
 ```
 
-* Edit by executing `vim /etc/paludis/options.conf` and add the following:
+Edit by executing `vim /etc/paludis/options.conf` and add the following:
 
 ```bash
 */* -recommended_tests -fortan systemd dbus gtk threads alsa pulseaudio \

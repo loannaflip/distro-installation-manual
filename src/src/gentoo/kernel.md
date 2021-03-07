@@ -18,6 +18,6 @@
   - Change to the kernel directory: `cd linux`.
   - Configure the kernel using menu-driven configuration screen: `make --jobs "$(nproc || printf '%s\n' 1)" menuconfig`.
   - **OR** Configure the kernel (Update current config disabling modules not loaded): `make --jobs "$(nproc || printf '%s\n' 1)" localmodconfig`.
-  - Compile the kernel: `make --jobs "$(nproc || printf '%s\n' 1)" make`.
+  - Compile the kernel: `make --jobs "$(nproc || printf '%s\n' 1)"`.
   - Install the kernel modules: `make --jobs "$(nproc || printf '%s\n' 1)" modules_install`.
   - Copy the kernel image to `/boot/`: `make --jobs "$(nproc || printf '%s\n' 1)" install`.

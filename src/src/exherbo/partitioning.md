@@ -1,5 +1,5 @@
 ## Preparing the storage drives
-Create a boot and root partition of any size. Recommended at-least `300MB` for boot & `40GB` for root partition.
+Create a boot and root partition of any size. Recommended at-least `100MB` for boot & `40GB` for root partition.
 - NOTE: `<superuser>` -> `sudo`/`doas` or `X`.
 * Prepare them: `<superuser> cfdisk /dev/sdx` (`x` -> your preferred storage. Check by invoking the command: `df -h` or `lsblk`).
 * Format the filesystems for each partition:

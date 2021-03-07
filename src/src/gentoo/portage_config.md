@@ -5,17 +5,18 @@
 
 
 ## Configuring Portage Config
-- Edit by executing `nano /etc/portage/make.conf` and add the following:
+Edit by executing `nano /etc/portage/make.conf` and add the following:
 ```bash
 # Flags
-# if on intel cpu add "-falign-functions=32" in COMMON_FLAGS
-COMMON_FLAGS="-O3 -pipe -march=native -mtune=native"
+# if you are not on intel cpu then remove "-falign-functions=32" in COMMON_FLAGS
+COMMON_FLAGS="-march=skylake -mtune=skylake ${CFLAGS} -pipe -flto='auto' -fdevirtualize-at-ltrans -fno-math-errno -fno-trapping-math -fno-semantic-interposition -fipa-pta -fgraphite-identity -floop-nest-optimize -fuse-linker-plugin -fno-plt -falign-functions=32"
 CFLAGS="${COMMON_FLAGS}"
 CXXFLAGS="${COMMON_FLAGS}"
 FCFLAGS="${COMMON_FLAGS}"
 FFLAGS="${COMMON_FLAGS}"
-FDFLAGS="-Wl,-O3 -Wl, -pthread -lpthread"
-LDFLAGS="-Wl,-O3 -Wl,--as-needed -Wl,--sort-common -Wl,--hash-style=gnu"
+FDFLAGS="-Wl,-O3 -Wl,--as-needed"
+LDFLAGS="${FDLAGS}"
+DFLAGS="${FDLAGS}"
 # Can be found using https://packages.gentoo.org/packages/app-portage/cpuid2cpuflags
 CPU_FLAGS_X86="TO-BE-FILLED-BY-THE-USER"
 CHOST="x86_64-pc-linux-gnu"
@@ -25,11 +26,19 @@ VIDEO_CARDS="TO-BE-FILLED-BY-THE-USER"
 
 # USE FLAGS
 BOOTSTRAP_USE="unicode internal-glib pkg-config split-usr python_targets_python3_7 python_targets_python2_7 -multilib"
-USE="-test -fortan -systemd -consolekit -debug -wifi -cups -cdr -ipod -bluetooth -hardened -multilib -samba \
-     btrfs ext4 fat elogind unicode dbus man pulseaudio ssl tcmalloc graphite lto xinerama gnome-keyring icu \
-     ffmpeg blueray jpeg jpeg2k json openssl alsa pgo jumbo-build gtk X gles2 policykit opengl threads \
-     png posix pic rar zip raw quicktime sound ithreads unzip udf secure-delete x264 x265 \
-     zeroconf theora 10bit 12bit 7z 7zip mpi-threads offensive bash-completion"
+USE="-test -telemetry -debug -wifi -cups -selinux -samba -cdr -bluetooth -hardened -multilib -samba -wext -modemmanager -minimal \
+     luajit systemd X xinerama dbus sound pulseaudio alsa ffmpeg btrfs zstd threads ithreads custom-cflags networkmanager \
+     graphite pgo lto posix vaapi openh264 lm-sensors git firmware opengl openal png jpeg raw gif gimp tiff \
+     gtk gnome gnome-keyring qt5 wayland unicode vulkan bash-completion gui truetype webp x264 theora encode \
+     pdf man aac fftw opus vorbis wavpak tk fish-completion \
+     system-av1 system-binutils system-boost system-bootstrap \
+     system-cmark system-ffmpeg system-harfbuzz system-heimdal \
+     system-icu system-ipxe system-jpeg system-jsoncpp system-lcms \
+     system-leveldb system-libevent system-libs system-libvpx \
+     system-libyaml system-llvm system-lua system-lz4 \
+     system-zstd system-mathjax system-mesa system-mitkrb5 \
+     system-numpy system-python system-qemu system-ssl \
+     system-webp system-wlroots system-zlib"
 
 
 # Package specific
@@ -123,39 +132,44 @@ LC_MESSAGES=C
 # Mirrors
 GENTOO_MIRRORS="http://distfiles.gentoo.org"
 ```
-- Edit by executing `nano /etc/portage/package.use` and add the following:
+Edit by executing `nano /etc/portage/package.use` and add the following:
 ```bash
 # User Sets #
-sys-devel/gcc pgo graphite lto -ada -d -objc
-dev-vcs/git curl blksha1
-net-libs/nodejs npm
-sys-devel/llvm gold
-www-client/chromium tcmalloc -hangouts -official -wayland
+sys-devel/gcc pgo graphite lto custom-cflags valgrind jit zstd
+sys-libs/glibc custom-cflags
+sys-devel/binutils multitarget
+net-libs/nodejs npm inspector
+sys-devel/llvm gold llvm_targets_WebAssembly
 media-video/ffmpeg openssl fdk
-media-libs/mesa vulkan
 x11-misc/picom config-file opengl
-app-crypt/pinentry gnome-keyring
-sys-libs/glibc -multilib
-net-print/cups-filters -pdf
-app-emulation/qemu usbredir spice
+app-emulation/qemu usbredir spice xen
 app-emulation/libvirt virt-network virtualbox libvirtd fuse
 sys-apps/usermode-utilities fuse
-net-dns/dnsmasq script
-media-libs/mlt jack frei0r melt kdenlive
-app-editors/emacs xft
-sys-apps/kmod lzma zlib
-dev-qt/qtwidgets gtk
-net-misc/spice-gtk usbredir
-sys-libs/zlib static-libs
-app-editors/vim X terminal
-media-libs/libsdl2 haptic
-www-client/firefox pgo lto clang custom-optimization gmp-autoupdate hwaccel pulseaudio screenshot startup-notification system-av1 system-icu system-jpeg system-libevent system-libvpx system-sqlite system-webp -bindist -eme-free -geckodriver -jack
-dev-lang/rust clippy doc -libressl rls rustfmt -nightly -parallel-compiler -system-bootstrap -wasm
+app-editors/emacs xft athena
+www-client/chromium official custom-cflags
+www-client/firefox pgo lto custom-optimization gmp-autoupdate hwaccel pulseaudio -screenshot -startup-notification -bindist eme-free -geckodriver -jack
+dev-lang/rust clippy miri doc -libressl rls rustfmt nightly parallel-compiler system-bootstrap wasm llvm_targets_WebAssembly
 sys-kernel/linux-firmware savedconfig
 app-portage/layman sync-plugin-portage git
-media-plugins/alsa-plugins pulseaudio
 x11-base/xorg-drivers libinput
-x11-base/xorg-server elogind xvfb
+x11-base/xorg-server elogind xvfb kdrive xephyr
+net-misc/networkmanager -wext -modemmanager
+media-plugins/alsa-plugins pulseaudio
+media-fonts/nerd-fonts noto
+media-video/mpv libmpv
+sys-boot/grub fonts truetype mount
+sys-apps/systemd zstd cgroup-hybrid
+media-libs/vulkan-loader layers
+app-office/libreoffice java
+media-fonts/noto extra
+media-fonts/powerline-fonts sourcecodepro
+media-fonts/cantarell font_types_otf
+media-sound/deadbeef clang
+app-emulation/xen efi
+app-emulation/xen-tools system-ipxe -system-qemu qemu -ipxe
+sys-boot/plymouth -udev
+x11-wm/openbox imlib
+gui-wm/sway fish-completion man swaybar swaybg swayidle swaymsg swaylock swaynag tray wallpapers zsh-completion
 sys-apps/openrc -netifrc
 net-misc/networkmanager -wex
 ```

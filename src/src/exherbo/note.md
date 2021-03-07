@@ -11,6 +11,7 @@ This guide uses Heavily Optimized <a href=https://paludis.exherbo.org/>Paludis</
 * Openssl (cryptography library)
 * pulseaudio (sound server)
 * Aggressive `-Ofast` GCC optimization
+* TMPFS
 * LOCALE: `en_US.utf8`
 * BTRFS filesystem for Root partition (no separate home partition)
 * EFI (vfat/fat32) for Boot partition
