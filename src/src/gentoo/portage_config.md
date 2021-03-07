@@ -26,8 +26,8 @@ VIDEO_CARDS="TO-BE-FILLED-BY-THE-USER"
 
 # USE FLAGS
 BOOTSTRAP_USE="unicode internal-glib pkg-config split-usr python_targets_python3_7 python_targets_python2_7 -multilib"
-USE="-test -telemetry -debug -wifi -cups -selinux -samba -cdr -bluetooth -hardened -multilib -samba -wext -modemmanager -minimal \
-     luajit systemd X xinerama dbus sound pulseaudio alsa ffmpeg btrfs zstd threads ithreads custom-cflags networkmanager \
+USE="-test -systemd -consolekit -telemetry -debug -wifi -cups -selinux -samba -cdr -bluetooth -hardened -multilib -samba -wext -modemmanager -minimal \
+     luajit X xinerama dbus sound pulseaudio alsa ffmpeg btrfs zstd threads ithreads custom-cflags networkmanager \
      graphite pgo lto posix vaapi openh264 lm-sensors git firmware opengl openal png jpeg raw gif gimp tiff \
      gtk gnome gnome-keyring qt5 wayland unicode vulkan bash-completion gui truetype webp x264 theora encode \
      pdf man aac fftw opus vorbis wavpak tk fish-completion \

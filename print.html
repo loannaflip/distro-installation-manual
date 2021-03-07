@@ -351,8 +351,8 @@ VIDEO_CARDS=&quot;TO-BE-FILLED-BY-THE-USER&quot;
 
 # USE FLAGS
 BOOTSTRAP_USE=&quot;unicode internal-glib pkg-config split-usr python_targets_python3_7 python_targets_python2_7 -multilib&quot;
-USE=&quot;-test -telemetry -debug -wifi -cups -selinux -samba -cdr -bluetooth -hardened -multilib -samba -wext -modemmanager -minimal \
-     luajit systemd X xinerama dbus sound pulseaudio alsa ffmpeg btrfs zstd threads ithreads custom-cflags networkmanager \
+USE=&quot;-test -systemd -consolekit -telemetry -debug -wifi -cups -selinux -samba -cdr -bluetooth -hardened -multilib -samba -wext -modemmanager -minimal \
+     luajit X xinerama dbus sound pulseaudio alsa ffmpeg btrfs zstd threads ithreads custom-cflags networkmanager \
      graphite pgo lto posix vaapi openh264 lm-sensors git firmware opengl openal png jpeg raw gif gimp tiff \
      gtk gnome gnome-keyring qt5 wayland unicode vulkan bash-completion gui truetype webp x264 theora encode \
      pdf man aac fftw opus vorbis wavpak tk fish-completion \
@@ -785,23 +785,20 @@ if [ &quot;${CATEGORY}/${PN}&quot; = &quot;dev-lang/python&quot; ] ; then
 fi
 </code></pre>
 <p>Edit by executing <code>vim /etc/paludis/options.conf</code> and add the following:</p>
-<pre><code class="language-bash">*/* -recommended_tests -fortan systemd dbus gtk threads alsa pulseaudio \
-    # N to be replaced with the number of total threads on the system
-    BUILD_OPTIONS: jobs=N symbols=strip work=tidyup \
-    TARGETS: -* x86_64-pc-linux-gnu \
-    PYTHON_ABIS: -* 3.7 \
-    INPUT_DRIVERS: -* libinput \
-    LINGUAS: -* en_US \
-    # AMD64_CPU_FEATURES: -* TO-BE-FILLED-BY-THE-USER \
-    # VIDEO_DRIVERS: -* TO-BE-FILLED-BY-THE-USER \
-    PROVIDERS: systemd journald systemd-logind openssl ffmpeg \
-    PARTS: systemd
-
-# Recommended on IRC #exherbo
-sys-apps/paludis -python
+<pre><code class="language-bash">*/* -* -recommended_tests -debug systemd gtk alsa bash-completion -bluetooth -wifi threads pulseaudio \
+  BUILD_OPTIONS: jobs=4 symbols=strip work=tidyup \
+  TARGETS: -* i686-pc-linux-gnu x86_64-pc-linux-gnu \
+  PYTHON_ABIS: -* 3.10 \
+  INPUT_DRIVERS: -* evdev libinput keyboard mouse \
+  LINGUAS: -* en_US \
+  # AMD64_CPU_FEATURES: -* TO-BE-FILLED-BY-THE-USER \
+  # VIDEO_DRIVERS: -* TO-BE-FILLED-BY-THE-USER \
+  PROVIDERS: systemd \
+  PARTS: systemd
 
 # Local Use Flags #
-dev-vcs/git curl
+sys-apps/paludis -python
+dev-scm/git curl
 sys-apps/systemd curl
 </code></pre>
 <h2 id="updating-the-system"><a class="header" href="#updating-the-system">Updating the system</a></h2>

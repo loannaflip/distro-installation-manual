@@ -35,22 +35,19 @@ fi
 Edit by executing `vim /etc/paludis/options.conf` and add the following:
 
 ```bash
-*/* -recommended_tests -fortan systemd dbus gtk threads alsa pulseaudio \
-    # N to be replaced with the number of total threads on the system
-    BUILD_OPTIONS: jobs=N symbols=strip work=tidyup \
-    TARGETS: -* x86_64-pc-linux-gnu \
-    PYTHON_ABIS: -* 3.7 \
-    INPUT_DRIVERS: -* libinput \
-    LINGUAS: -* en_US \
-    # AMD64_CPU_FEATURES: -* TO-BE-FILLED-BY-THE-USER \
-    # VIDEO_DRIVERS: -* TO-BE-FILLED-BY-THE-USER \
-    PROVIDERS: systemd journald systemd-logind openssl ffmpeg \
-    PARTS: systemd
-
-# Recommended on IRC #exherbo
-sys-apps/paludis -python
+*/* -* -recommended_tests -debug systemd gtk alsa bash-completion -bluetooth -wifi threads pulseaudio \
+  BUILD_OPTIONS: jobs=4 symbols=strip work=tidyup \
+  TARGETS: -* i686-pc-linux-gnu x86_64-pc-linux-gnu \
+  PYTHON_ABIS: -* 3.10 \
+  INPUT_DRIVERS: -* evdev libinput keyboard mouse \
+  LINGUAS: -* en_US \
+  # AMD64_CPU_FEATURES: -* TO-BE-FILLED-BY-THE-USER \
+  # VIDEO_DRIVERS: -* TO-BE-FILLED-BY-THE-USER \
+  PROVIDERS: systemd \
+  PARTS: systemd
 
 # Local Use Flags #
-dev-vcs/git curl
+sys-apps/paludis -python
+dev-scm/git curl
 sys-apps/systemd curl
 ```
