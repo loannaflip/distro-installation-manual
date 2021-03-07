@@ -36,7 +36,8 @@ Edit by executing `vim /etc/paludis/options.conf` and add the following:
 
 ```bash
 */* -* -recommended_tests -debug systemd gtk alsa bash-completion -bluetooth -wifi threads pulseaudio \
-  BUILD_OPTIONS: jobs=4 symbols=strip work=tidyup \
+  # N to be replaced with the number of total threads on the system
+  BUILD_OPTIONS: jobs=N symbols=strip work=tidyup \
   TARGETS: -* i686-pc-linux-gnu x86_64-pc-linux-gnu \
   PYTHON_ABIS: -* 3.10 \
   INPUT_DRIVERS: -* evdev libinput keyboard mouse \
